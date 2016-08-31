@@ -6754,6 +6754,9 @@ button.close {
 #results .video .video-title {
   font-size: 18px;
 }
+#results .video .video-description {
+  width: 90%;
+}
 #results .video .video-views {
   display: inline-block;
 }
@@ -6764,5 +6767,8 @@ button.close {
   display: inline-block;
 }
 #results .video .addButton {
+  position: absolute;
   float: right;
+  top: 20px;
+  right: 0px;
 }

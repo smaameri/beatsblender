@@ -5,6 +5,16 @@
 		
 		$scope.query = 'Eminem';
 		
+		$scope.inLibrary = false;
+		
+		libs = false;
+		
+		change = function(){
+			libs = true;
+		}
+		
+		console.log(libs);
+		
 		init();				
 
     function init() {
@@ -12,9 +22,32 @@
       $scope.results = YoutubeFactory.getResults();
     };
 							
+							
 		$scope.add = function(id, title){
-				  YoutubeFactory.addToLibrary(id, title);
+		libs = false;
+			angular.forEach($scope.library, function(video){
+				if(video.id.videoId == id.videoId){
+					change()				
+				}
+			})
+			if(libs == false){
+					YoutubeFactory.addToLibrary(id, title);
 			  }
+			}
+			
+			$scope.remove = function(id, title){
+				angular.forEach($scope.library, function(video){
+					if(video.id.videoId == id.videoId){
+						index = $scope.library.indexOf(video)
+						if (index > -1) {
+						    $scope.library.splice(index, 1);
+						}
+					}
+				})
+			}
+			
+			
+			
 		
 		$scope.videoOrderBy = '';
 		
