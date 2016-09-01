@@ -33,19 +33,41 @@
 			};
 			
 		  fac.listResults = function(data){
-				results.length=0;
-				angular.forEach(data, function(items){
+						console.log(typeof data.snippet.publishedAt)
 		        results.push({
-		          id: items.videoId,
-		          title: items.snippet.title,
-							
+		          id: data.id.videoId,
+		          title: data.snippet.title,
+			        description: data.snippet.description,
+			        thumbnail: data.snippet.thumbnails.default.url,
+			        author: data.snippet.channelTitle,
+							likeCount:parseInt(data.likes).toLocaleString(),
+							viewCount:parseInt(data.views).toLocaleString(),
+							publishedAt:data.snippet.publishedAt.slice(0,-14),
 		        });
-		      });
-					console.log(data);
 		      return results;
 		    };
-				
 		
+				fac.getStatistics = function(video){
+					this.views(video.id.videoId).then(function(response2){
+								video.views = response2.data.items[0].statistics.viewCount;
+								video.likes = response2.data.items[0].statistics.likeCount;
+								fac.listResults(video);
+					}, function(error){
+						$log.info("Unable to load video statistics")
+					});
+				}
+				
+				fac.getVideo = function(query){
+					this.search(query).then(function(response1){
+						angular.forEach(response1.data.items, function(video){
+							fac.getStatistics(video);
+						});
+					}, function(error){
+						$log.info("Unable to load videos")
+					});
+					return results
+				}
+					
 	   fac.addToLibrary = function(id, title){
 		  library.push({
 		  		id:id,

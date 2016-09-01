@@ -45,11 +45,7 @@
 					YoutubeFactory.addToLibrary(id, title);
 					id.inLibrary = true;
 					id.buttonStyle = '{background:blue}';
-					
-					
-			  }
-				console.log($scope.libCaller);
-				
+			  }				
 				$scope.libraryStock = true;
 			}
 			
@@ -67,10 +63,8 @@
 						video.id.inLibrary = false;
 					}
 				})
-
 			}
-			
-		
+					
 		$scope.orderFunction = function(filter, filterReverse){
 			console.log($scope.filterReverse);
 			if(filterReverse == true){
@@ -82,35 +76,13 @@
 		}
 		
 		$scope.search = function(){
-			getVideo($scope.query);
+			$scope.results.length=0;
+			YoutubeFactory.getVideo($scope.query);
 			$scope.resultsAvailable=true;
+			angular.element( document.querySelector('#results-column')).val('border-show');		
 		}
 		
-		getVideo = function(query){
-			YoutubeFactory.search(query).then(function(response1){
-				angular.forEach(response1.data.items, function(video){
-					getStatistics(video, response1);
-				});
-				$scope.results = response1.data.items
-			}, function(error){
-				$scope.results = "Unable to load results"
-			});
-			
-			return results
-		}
 		
-		getStatistics = function(video, response1){
-			YoutubeFactory.views(video.id.videoId).then(function(response2){
-				angular.forEach(response1.data.items, function(list){
-					if(list.id.videoId == response2.data.items[0].id){
-						list.views = response2.data.items[0].statistics.viewCount;
-						list.likes = response2.data.items[0].statistics.likeCount;
-					};
-				})
-			}, function(error){
-				$scope.results = "Unable to load views"					
-			});
-		}
 					
 	})
 	

@@ -17,8 +17,8 @@
 	</form>
 	</div>
 				
-		<div class="row">
-		  <div class="col-md-8">
+		<div class="row" id='main'>
+		  <div class="col-md-8" id="results-column">
 				<div id="sort" data-ng-show="resultsAvailable">
 					<div id="sort-filters">
 						<p>Sort</p>
@@ -29,28 +29,30 @@
 					</div>
 				</div>
 				<div id="results_bar" >	
+					
 			    <div id="results">
 		        <div class="video" data-ng-repeat="video in results| orderBy:videoOrderBy:filterReverse " >
-		          <img class="video-image" data-ng-src="{{ '{{ video.snippet.thumbnails.default.url }}' }}">
-		          <p class="video-title">{{ '{{ video.snippet.title }}' }}</p>
-		          <p class="video-author">{{ '{{ video.snippet.author }}' }}</p>
-		          <p class="video-description">{{ '{{ video.snippet.description }}' }}</p>
-		          <p class="video-views">Views: {{ '{{ video.views }}' }}, </p>
-		          <p class="video-likes">Likes: {{ '{{ video.likes }}' }}, </p>
-		          <p class="video-uploaded">Uploaded: {{ '{{ video.snippet.publishedAt }}' }}</p>
-							<button href='#' class='addButton' data-ng-click="add(video.id, video.snippet.title)" data-ng-disabled="video.id.inLibrary" >Add</button>															
+		          <img class="video-image" data-ng-src="{{ '{{ video.thumbnail }}' }}">
+		          <p class="video-title">{{ '{{ video.title }}' }}</p>
+		          <p class="video-author">{{ '{{ video.author }}' }}</p>
+		          <p class="video-description">{{ '{{ video.description }}' }}</p>
+		          <p class="video-views"><span>Views:</span> {{ '{{ video.viewCount }}' }}</p>
+		          <p class="video-likes"><span>Likes:</span> {{ '{{ video.likeCount }}' }}</p>
+		          <p class="video-uploaded"><span>Uploaded:</span> {{ '{{ video.publishedAt }}' }}</p>
+							<p class='addButton' data-ng-click="add(video.id, video.snippet.title)" data-ng-disabled="video.id.inLibrary" >Add</p>															
 			      </div>
 			    </div>
 		    </div>
 				
 		</div>
-	  <div class="col-md-4">
+	  <div class="col-md-4" id='library-column'>
 		  <div id='library' data-ng-show="resultsAvailable">
 				<h2>Library</h2>
 				<h4 data-ng-show="!libraryStock">Your library is empty. Add some videos!</h4>
 		  	<div class='library-videos' data-ng-repeat="video in library">
+					<p class='removeButton' data-ng-click="remove(video.id)"  >&#10005</p>
 					<p class='libraryVideo'>{{ '{{ video.title }}' }}</p>
-					<button href='#' class='removeButton' data-ng-click="remove(video.id)"  >Remove</button>															
+																			
 				</div>
 		  </div>
 		</div>
