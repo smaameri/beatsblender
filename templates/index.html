@@ -40,7 +40,7 @@
 		          <p class="video-views">Views: {{ '{{ video.views }}' }}, </p>
 		          <p class="video-likes">Likes: {{ '{{ video.likes }}' }}, </p>
 		          <p class="video-uploaded">Uploaded: {{ '{{ video.snippet.publishedAt }}' }}</p>
-							<button href='#' class='addButton' data-ng-click="add(video.id, video.snippet.title)" >Add</button>															
+							<button href='#' class='addButton' data-ng-click="add(video.id, video.snippet.title)" data-ng-disabled="video.id.inLibrary" >Add</button>															
 			      </div>
 			    </div>
 		    </div>
@@ -48,11 +48,10 @@
 		</div>
 	  <div class="col-md-4">
 		  <div id='library'>
+				<h2>Library</h2>
 		  	<div class='library-videos' data-ng-repeat="video in library">
-				<p class='library-video-title'>{{ '{{ video.title }}' }}</p>
-				<button href='#' class='removeButton' data-ng-click="remove(video.id)" >Remove</button>															
-				
-				
+					<p class='libraryVideo'>{{ '{{ video.title }}' }}</p>
+					<button href='#' class='removeButton' data-ng-click="remove(video.id)"  >Remove</button>															
 				</div>
 		  </div>
 		</div>

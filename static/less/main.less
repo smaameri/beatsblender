@@ -20,11 +20,12 @@
 }
 
 #results{
-	padding:40px;
+	background: #f2f5fd;
+	background: #f5f5f5;
 	.video{
 		position:relative;
 		padding:10px;
-		padding-left:140px;
+		padding-left:140px;		
 		
 		.video-image{
 			float:left;
@@ -56,6 +57,30 @@
 			float:right;
 			top:20px;
 			right:0px;
+			background:green;
+		}
+		.addbutton[disabled]{
+			background:blue;
 		}
 	}
+}
+
+
+.video:nth-child(odd){
+	background:white;
+}
+
+
+.library-videos{
+	padding:20px;
+
+	.libraryVideo{
+		float:left;
+	
+	}
+
+	.removeButton{
+		float:right;
+	}
+
 }

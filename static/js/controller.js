@@ -3,6 +3,8 @@
 		
 		var videoViews = [];
 		
+		$scope.libCaller = false;
+		
 		$scope.query = 'Eminem';
 		
 		$scope.inLibrary = false;
@@ -25,14 +27,20 @@
 							
 		$scope.add = function(id, title){
 		libs = false;
+		id.inLibrary=false;
 			angular.forEach($scope.library, function(video){
 				if(video.id.videoId == id.videoId){
-					change()				
+					change();				
 				}
 			})
 			if(libs == false){
 					YoutubeFactory.addToLibrary(id, title);
+					id.inLibrary = true;
+					id.buttonStyle = '{background:blue}';
+					
+					
 			  }
+				console.log($scope.libCaller);
 			}
 			
 			$scope.remove = function(id, title){
@@ -44,7 +52,14 @@
 						}
 					}
 				})
+				angular.forEach($scope.results, function(video){
+					if(video.id.videoId == id.videoId){
+						video.id.inLibrary = false;
+					}
+				})
 			}
+			
+			
 			
 			
 			
