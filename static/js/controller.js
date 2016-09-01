@@ -9,6 +9,14 @@
 		
 		$scope.inLibrary = false;
 		
+		$scope.libraryStock = false;
+		
+		$resultsAvailable = false;
+		
+		$scope.videoOrderBy = '';
+		
+		$scope.filterReverse = false;
+				
 		libs = false;
 		
 		change = function(){
@@ -41,6 +49,8 @@
 					
 			  }
 				console.log($scope.libCaller);
+				
+				$scope.libraryStock = true;
 			}
 			
 			$scope.remove = function(id, title){
@@ -57,23 +67,23 @@
 						video.id.inLibrary = false;
 					}
 				})
+
 			}
 			
-			
-			
-			
-			
 		
-		$scope.videoOrderBy = '';
-		
-		$scope.orderFunction = function(filter){
-			console.log(filter);
+		$scope.orderFunction = function(filter, filterReverse){
+			console.log($scope.filterReverse);
+			if(filterReverse == true){
+				$scope.filterReverse = false;
+			}
+			else($scope.filterReverse=true);
 			$scope.videoOrderBy = filter;
 			return $scope.videoOrderBy;
 		}
 		
 		$scope.search = function(){
 			getVideo($scope.query);
+			$scope.resultsAvailable=true;
 		}
 		
 		getVideo = function(query){

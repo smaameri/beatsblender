@@ -16,23 +16,21 @@
 		<input type='text' id='query' data-ng-model='query'>				
 	</form>
 	</div>
-	
-  
-	<div class="row">
-	  <div class="col-md-12">
-				<p>Sort:</p>
-				<a href='#' data-ng-click="orderFunction('snippet.title')">Title</a>
-				<a href='#' data-ng-click="orderFunction('views')">Views</a>
-				<a href='#' data-ng-click="orderFunction('likes')">Likes</a>
-				<a href='#' data-ng-click="orderFunction('snippet.publishedAt')">Uploaded</a>
-	    </div>
-		</div>
 				
 		<div class="row">
 		  <div class="col-md-8">
+				<div id="sort" data-ng-show="resultsAvailable">
+					<div id="sort-filters">
+						<p>Sort</p>
+						<a href='' data-ng-click="orderFunction('snippet.title', filterReverse)">Title</a>
+						<a href='' data-ng-click="orderFunction('views', filterReverse)">Views</a>
+						<a href='' data-ng-click="orderFunction('likes', filterReverse)">Likes</a>
+						<a href='' data-ng-click="orderFunction('snippet.publishedAt', filterReverse)">Uploaded</a>
+					</div>
+				</div>
 				<div id="results_bar" >	
 			    <div id="results">
-		        <div class="video" data-ng-repeat="video in results| orderBy:videoOrderBy " >
+		        <div class="video" data-ng-repeat="video in results| orderBy:videoOrderBy:filterReverse " >
 		          <img class="video-image" data-ng-src="{{ '{{ video.snippet.thumbnails.default.url }}' }}">
 		          <p class="video-title">{{ '{{ video.snippet.title }}' }}</p>
 		          <p class="video-author">{{ '{{ video.snippet.author }}' }}</p>
@@ -47,8 +45,9 @@
 				
 		</div>
 	  <div class="col-md-4">
-		  <div id='library'>
+		  <div id='library' data-ng-show="resultsAvailable">
 				<h2>Library</h2>
+				<h4 data-ng-show="!libraryStock">Your library is empty. Add some videos!</h4>
 		  	<div class='library-videos' data-ng-repeat="video in library">
 					<p class='libraryVideo'>{{ '{{ video.title }}' }}</p>
 					<button href='#' class='removeButton' data-ng-click="remove(video.id)"  >Remove</button>															
