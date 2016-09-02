@@ -15,7 +15,7 @@
             type: 'video',
             maxResults: '5',
             part: 'id,snippet',
-            fields: 'items/id,items/snippet/title,items/snippet/description,items/snippet/thumbnails/default,items/snippet/publishedAt',
+            fields: 'items/id,items/snippet/title,items/snippet/channelTitle,items/snippet/description,items/snippet/thumbnails/high,items/snippet/publishedAt',
             q: query,
           }			  
         })
@@ -33,16 +33,16 @@
 			};
 			
 		  fac.listResults = function(data){
-						console.log(typeof data.snippet.publishedAt)
-		        results.push({
+				results.push({
 		          id: data.id.videoId,
-		          title: data.snippet.title,
+		          title: data.snippet.title, 
 			        description: data.snippet.description,
-			        thumbnail: data.snippet.thumbnails.default.url,
+			        thumbnail: data.snippet.thumbnails.high.url,
 			        author: data.snippet.channelTitle,
 							likeCount:parseInt(data.likes).toLocaleString(),
 							viewCount:parseInt(data.views).toLocaleString(),
 							publishedAt:data.snippet.publishedAt.slice(0,-14),
+							inLibrary:fac.isVideoInLibrary(data),
 		        });
 		      return results;
 		    };
@@ -58,8 +58,8 @@
 				}
 				
 				fac.getVideo = function(query){
-					this.search(query).then(function(response1){
-						angular.forEach(response1.data.items, function(video){
+					this.search(query).then(function(videosResponse){
+						angular.forEach(videosResponse.data.items, function(video){
 							fac.getStatistics(video);
 						});
 					}, function(error){
@@ -68,14 +68,40 @@
 					return results
 				}
 					
-	   fac.addToLibrary = function(id, title){
-		  library.push({
-		  		id:id,
-				title:title
-		  	})
+	   fac.addToLibrary = function(resultVideo){
+		  library.push(resultVideo)
 			return library;
 		  };
 			
+			fac.setVideoInLibraryStatus = function(libraryVideo){
+				angular.forEach(results, function(resultsVideo){
+					if(resultsVideo.id == libraryVideo.id){
+						resultsVideo.inLibrary = false;
+					}
+				})
+			}
+			
+			fac.removeFromLibrary = function(libraryVideo){
+				angular.forEach(library, function(video){
+					if(video.id == libraryVideo.id){
+						index = library.indexOf(video)
+						if (index > -1) {library.splice(index, 1);}
+					}
+				})
+			}
+			
+			fac.isVideoInLibrary = function(video){
+				var inLibrary;
+				if(library.length==0){inLibrary=false}
+				else(
+					angular.forEach(library, function(libraryVideo){
+						if(video.id.videoId==libraryVideo.id){inLibrary=true;}
+						else(inLibrary=false)
+					})
+				)
+				return inLibrary
+			}
+				
 	    fac.getResults = function () {
 	        return results;
 	      };

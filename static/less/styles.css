@@ -6776,12 +6776,13 @@ html {
   position: relative;
   padding: 10px;
   padding-left: 140px;
-  height: 135px;
 }
 #results .video .video-image {
   float: left;
   left: 10px;
   position: absolute;
+  height: 90px;
+  width: 120px;
 }
 #results .video .video-title {
   font-size: 18px;
@@ -6812,15 +6813,27 @@ html {
   font-weight: bold;
   color: #555555;
 }
-#results .video .addButton {
+#results .video .addButton,
+#results .video .resultRemoveButton {
   position: absolute;
   float: right;
   top: 50px;
   right: 50px;
-  border-radius: 20px;
-  padding: 5px;
-  border: none;
-  color: green;
+  width: 28px;
+  height: 28px;
+  padding-left: 1px;
+  padding-top: 10px;
+  border: 2px solid;
+  border-radius: 50%;
+  color: #5cb85c;
+  font-weight: bold;
+  text-align: center;
+  font-size: 24px;
+  line-height: 0;
+  vertical-align: middle;
+}
+#results .video .resultRemoveButton {
+  color: #d9534f;
 }
 #results .video:nth-child(odd) {
   background: white;
@@ -6847,10 +6860,74 @@ html {
   margin-right: 80px;
   padding: 20px 20px;
 }
+#library .library-videos .libraryVideo:hover {
+  background: #eeeeee;
+  cursor: pointer;
+  cursor: hand;
+}
 #library .library-videos .removeButton {
   color: #ac0809;
   float: right;
   text-align: center;
   padding: 20px 0;
   width: 80px;
+}
+#videoDetails {
+  padding: 10px;
+  padding-left: 140px;
+}
+#videoDetails .detail-image {
+  float: center;
+  left: 10px;
+}
+#videoDetails .detail-title {
+  font-size: 18px;
+}
+#videoDetails .detail-description {
+  width: 70%;
+}
+#videoDetails .detail-views {
+  display: inline-block;
+  margin-right: 20px;
+}
+#videoDetails .detail-views span {
+  font-weight: bold;
+  color: #555555;
+}
+#videoDetails .detail-likes {
+  display: inline-block;
+  margin-right: 20px;
+}
+#videoDetails .detail-likes span {
+  font-weight: bold;
+  color: #555555;
+}
+#videoDetails .detail-uploaded {
+  display: inline-block;
+}
+#videoDetails .detail-uploaded span {
+  font-weight: bold;
+  color: #555555;
+}
+#videoDetails .addButton,
+#videoDetails .resultRemoveButton {
+  position: absolute;
+  float: right;
+  top: 50px;
+  right: 50px;
+  width: 28px;
+  height: 28px;
+  padding-left: 1px;
+  padding-top: 10px;
+  border: 2px solid;
+  border-radius: 50%;
+  color: #5cb85c;
+  font-weight: bold;
+  text-align: center;
+  font-size: 24px;
+  line-height: 0;
+  vertical-align: middle;
+}
+#videoDetails .resultRemoveButton {
+  color: #d9534f;
 }

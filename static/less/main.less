@@ -68,12 +68,13 @@ html {
 		position:relative;
 		padding:10px;
 		padding-left:140px;
-		height:135px;
 		
 		.video-image{
 			float:left;
 			left:10px;
 			position:absolute;
+			height:90px;
+			width:120px;
 		}
 		.video-title{
 			font-size:18px;
@@ -103,17 +104,32 @@ html {
 			
 		}
 		
-		.addButton{
+		.addButton, .resultRemoveButton{
 			position:absolute;
 			float:right;
 			top:50px;
 			right:50px;
-			border-radius:20px;
-			padding:5px;
-			border:none;
-			color:green;
+	    width: 28px;
+	    height: 28px;
+			padding-left:1px;
+	    padding-top: 10px;
+			border:2px solid;
+			border-radius:50%;
+			color:@brand-success;
+			font-weight:bold;
+	    text-align: center;
+	    font-size:24px;
+			line-height:0;
+			vertical-align: middle;
+			
+		}
+		.addbutton{
 		}
 		.addbutton[disabled]{
+		}
+		.resultRemoveButton{
+			color:@brand-danger;
+			
 		}
 	}
 	.video:nth-child(odd){
@@ -158,6 +174,12 @@ html {
 			padding: 20px 20px;			
 	
 		}
+		
+		.libraryVideo:hover{
+			background:@gray-lighter;
+			cursor: pointer;
+			cursor: hand;
+		}
 
 		.removeButton{
 			color: #ac0809;
@@ -171,3 +193,69 @@ html {
 	}
 
 }
+
+
+#videoDetails{
+		padding:10px;
+		padding-left:140px;
+		
+		.detail-image{
+			float:center;
+			left:10px;
+		}
+		.detail-title{
+			font-size:18px;
+		}
+		.detail-author{
+			
+		}
+		.detail-description{
+			width:70%;
+		}
+		.detail-views{
+			display:inline-block;
+			margin-right:20px;
+			span{font-weight:bold; color:@gray;}
+		}
+
+		.detail-likes{
+			display:inline-block;
+			margin-right:20px;
+			span{font-weight:bold; color:@gray;}
+			
+			
+		}
+		.detail-uploaded{
+			display:inline-block;
+			span{font-weight:bold; color:@gray;}
+			
+		}
+		
+		.addButton, .resultRemoveButton{
+			position:absolute;
+			float:right;
+			top:50px;
+			right:50px;
+	    width: 28px;
+	    height: 28px;
+			padding-left:1px;
+	    padding-top: 10px;
+			border:2px solid;
+			border-radius:50%;
+			color:@brand-success;
+			font-weight:bold;
+	    text-align: center;
+	    font-size:24px;
+			line-height:0;
+			vertical-align: middle;
+			
+		}
+		.addbutton{
+		}
+		.addbutton[disabled]{
+		}
+		.resultRemoveButton{
+			color:@brand-danger;
+			
+		}
+	}
