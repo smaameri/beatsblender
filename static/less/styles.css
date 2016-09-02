@@ -6749,11 +6749,17 @@ html {
 #sort {
   background: #f5f5f5;
   padding: 30px;
+  margin-bottom: 25px;
+}
+#sort h2 {
+  display: inline;
+  margin-left: 130px;
 }
 #sort #sort-filters {
-  position: absolute;
-  top: 20px;
-  right: 100px;
+  position: relative;
+  top: 10px;
+  right: 10px;
+  float: right;
 }
 #sort #sort-filters p {
   display: inline;
@@ -6821,7 +6827,7 @@ html {
   right: 50px;
   width: 28px;
   height: 28px;
-  padding-left: 1px;
+  padding-left: 0px;
   padding-top: 10px;
   border: 2px solid;
   border-radius: 50%;
@@ -6872,42 +6878,44 @@ html {
   padding: 20px 0;
   width: 80px;
 }
+#tv {
+  float: center;
+  padding-top: 40px;
+  padding-bottom: 30px;
+  border: solid 10px #eeeeee;
+  background: #333333;
+  color: white;
+}
 #videoDetails {
-  padding: 10px;
-  padding-left: 140px;
+  min-height: 360px;
+  padding-left: 550px;
 }
 #videoDetails .detail-image {
-  float: center;
-  left: 10px;
+  left: 60px;
+  position: absolute;
 }
 #videoDetails .detail-title {
   font-size: 18px;
+  color: #47b0e2;
 }
 #videoDetails .detail-description {
-  width: 70%;
+  width: 90%;
+  font-weight: normal;
 }
 #videoDetails .detail-views {
-  display: inline-block;
   margin-right: 20px;
 }
 #videoDetails .detail-views span {
-  font-weight: bold;
-  color: #555555;
+  color: #47b0e2;
 }
 #videoDetails .detail-likes {
-  display: inline-block;
   margin-right: 20px;
 }
 #videoDetails .detail-likes span {
-  font-weight: bold;
-  color: #555555;
-}
-#videoDetails .detail-uploaded {
-  display: inline-block;
+  color: #47b0e2;
 }
 #videoDetails .detail-uploaded span {
-  font-weight: bold;
-  color: #555555;
+  color: #47b0e2;
 }
 #videoDetails .addButton,
 #videoDetails .resultRemoveButton {

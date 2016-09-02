@@ -12,23 +12,26 @@
 </head>
 <body data-ng-controller="MainController" data-ng-cloak>
 	<div id='search'>
-		<form data-ng-submit="search()">
+		<form data-ng-submit="search(query)">
 		<input type='text' id='query' data-ng-model='query'>				
 	</form>
 	</div>
 				
 		<div class="row" id='main'>
 		  <div class="col-md-8" id="results-column">
-				<div id='videoDetails' data-ng-show="videoDetails">
-          <img class="detail-image" data-ng-src="{{ '{{ detail.thumbnail }}' }}">
-          <p class="detail-title">{{ '{{ detail.title }}' }}</p>
-          <p class="detail-author">{{ '{{ detail.author }}' }}</p>
-          <p class="detail-description">{{ '{{ detail.description }}' }}</p>
-          <p class="detail-views"><span>Views:</span> {{ '{{ detail.viewCount }}' }}</p>
-          <p class="detail-likes"><span>Likes:</span> {{ '{{ detail.likeCount }}' }}</p>
-          <p class="detail-uploaded"><span>Uploaded:</span> {{ '{{ detail.publishedAt }}' }}</p>
+				<div id="tv" data-ng-show="videoDetails">	
+					<div id='videoDetails' >
+	          <img class="detail-image" data-ng-src="{{ '{{ detail.thumbnail }}' }}">
+	          <p class="detail-title">{{ '{{ detail.title }}' }}</p>
+	          <p class="detail-author">{{ '{{ detail.author }}' }}</p>
+	          <p class="detail-description">{{ '{{ detail.description }}' }}</p>
+	          <p class="detail-views"><span>Views:</span> {{ '{{ detail.viewCount }}' }}</p>
+	          <p class="detail-likes"><span>Likes:</span> {{ '{{ detail.likeCount }}' }}</p>
+	          <p class="detail-uploaded"><span>Uploaded:</span> {{ '{{ detail.publishedAt }}' }}</p>
+					</div>
 				</div>
 				<div id="sort" data-ng-show="resultsAvailable">
+					<h2>{{ '{{searchType}}' }}</h2>
 					<div id="sort-filters">
 						<p>Sort</p>
 						<a href='' data-ng-click="orderFunction('title', filterReverse)">Title</a>

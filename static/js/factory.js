@@ -16,7 +16,7 @@
             maxResults: '5',
             part: 'id,snippet',
             fields: 'items/id,items/snippet/title,items/snippet/channelTitle,items/snippet/description,items/snippet/thumbnails/high,items/snippet/publishedAt',
-            q: query,
+						q: query,
           }			  
         })
 			};

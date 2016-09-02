@@ -23,12 +23,17 @@
       $scope.results = YoutubeFactory.getResults();
     };
 							
-		$scope.search = function(){
+		$scope.search = function(query){
 			$scope.results.length=0;
-			YoutubeFactory.getVideo($scope.query);
+			$scope.videoDetails=false;
+			YoutubeFactory.getVideo(query);
 			$scope.resultsAvailable=true;
-			console.log($scope.results);
+			$scope.searchType = 'Search results';
 		}
+		
+		$scope.relatedVideosSearch = function(video){
+		}
+		
 						
 		$scope.add = function(resultsVideo){
 				if(resultsVideo.inLibrary == false){
@@ -55,6 +60,11 @@
 			$scope.showVideoDetails = function(video){
 				$scope.videoDetails=true;
 				$scope.detail=video;
+				$scope.results.length=0;
+				YoutubeFactory.getVideo(video.id);
+				$scope.resultsAvailable=true;
+				$scope.searchType = 'Related Videos';
+								
 				
 			}
 				
