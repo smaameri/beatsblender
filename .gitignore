@@ -1,0 +1,4 @@
+flask
+*.pyc
+staticfiles
+.env

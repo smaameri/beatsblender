@@ -40,7 +40,7 @@ deactivate () {
 # unset irrelevant variables
 deactivate nondestructive
 
-VIRTUAL_ENV="/Users/sami/Documents/flask/angular-http/flask"
+VIRTUAL_ENV="/Users/sami/Documents/flask/beatsblender/flask"
 export VIRTUAL_ENV
 
 _OLD_VIRTUAL_PATH="$PATH"
