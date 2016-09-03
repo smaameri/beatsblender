@@ -14,7 +14,7 @@
 <body data-ng-controller="MainController" data-ng-cloak>
 	<div id='search'>
 		<form data-ng-submit="search(query)">
-		<input type='text' id='query' data-ng-model='query'>				
+		<input type='text' id='query' data-ng-model='query' placeholder="Search...">				
 	</form>
 	</div>
 	<div id='landing' data-ng-show="!videoDetails && !resultsAvailable">

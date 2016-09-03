@@ -6751,11 +6751,12 @@ html {
   margin-left: 10%;
   border-radius: 20px;
   border-color: gray;
-  height: 40px;
+  height: 42px;
   text-align: center;
   float: center;
   border-style: none;
-  font-size: 14px;
+  font-size: 20px;
+  color: #555555;
 }
 #search #submit {
   height: 40px;

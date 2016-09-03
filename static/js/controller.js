@@ -6,9 +6,7 @@
 		$scope.libCaller, $scope.inLibrary, $scope.libraryStock = false;
 		
 		$scope.resultsAvailable, $scope.filterReverse, videoInLibrary = false;
-		
-		$scope.query = 'Eminem';
-				
+						
 		$scope.videoOrderBy = '';
 		
 						
