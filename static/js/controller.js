@@ -1,5 +1,5 @@
 
-	app.controller('MainController', function($scope, $q, YoutubeFactory){
+	app.controller('MainController', function($scope, $q, YoutubeFactory, LibraryServices){
 		
 		var videoViews = [];
 		
@@ -17,7 +17,7 @@
 		init();				
 		
     function init() {
-      $scope.library = YoutubeFactory.getLibrary();
+      $scope.library = LibraryServices.getLibrary();
       $scope.results = YoutubeFactory.getResults();
     };
 							
@@ -27,23 +27,20 @@
 			YoutubeFactory.getVideo(query);
 			$scope.resultsAvailable=true;
 			$scope.searchType = 'Search results';
-		}
-		
-		$scope.relatedVideosSearch = function(video){
-		}
-		
+		}		
 						
 		$scope.add = function(resultsVideo){
 				if(resultsVideo.inLibrary == false){
-						YoutubeFactory.addToLibrary(resultsVideo);
+						LibraryServices.addToLibrary(resultsVideo);
 						resultsVideo.inLibrary = true;
-				  }				
-					$scope.libraryStock = true;
+						$scope.libraryStock = true;
+				  }
+					else(this.remove(resultsVideo));		
 			}
 			
 			$scope.remove = function(libraryVideo){
-				YoutubeFactory.removeFromLibrary(libraryVideo);
-				YoutubeFactory.setVideoInLibraryStatus(libraryVideo);
+				LibraryServices.removeFromLibrary(libraryVideo);
+				LibraryServices.setVideoInLibraryStatus(libraryVideo);
 				if($scope.library.length==0){$scope.libraryStock=false}				
 			}
 					
@@ -61,9 +58,7 @@
 				$scope.results.length=0;
 				YoutubeFactory.getVideo(video.id);
 				$scope.resultsAvailable=true;
-				$scope.searchType = 'Related Videos';
-								
-				
+				$scope.searchType = 'Related Videos';				
 			}
 				
 	})

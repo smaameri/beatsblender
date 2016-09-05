@@ -1,9 +1,8 @@
 
-	app.factory('YoutubeFactory', function($http){
+app.factory('YoutubeFactory', function($http, LibraryServices){
 		
 		var fac ={};
 		
-		library =[]			
 		results=[]
 		
 		fac.users = ['J', 'M', 'P'];
@@ -42,7 +41,7 @@
 							likeCount:parseInt(data.likes).toLocaleString(),
 							viewCount:parseInt(data.views).toLocaleString(),
 							publishedAt:data.snippet.publishedAt.slice(0,-14),
-							inLibrary:fac.isVideoInLibrary(data),
+							inLibrary:LibraryServices.isVideoInLibrary(data),
 		        });
 		      return results;
 		    };
@@ -68,51 +67,64 @@
 					return results
 				}
 					
-	   fac.addToLibrary = function(resultVideo){
-		  library.push(resultVideo)
-			return library;
-		  };
-			
-			fac.setVideoInLibraryStatus = function(libraryVideo){
-				angular.forEach(results, function(resultsVideo){
-					if(resultsVideo.id == libraryVideo.id){
-						resultsVideo.inLibrary = false;
-					}
-				})
-			}
-			
-			fac.removeFromLibrary = function(libraryVideo){
-				angular.forEach(library, function(video){
-					if(video.id == libraryVideo.id){
-						index = library.indexOf(video)
-						if (index > -1) {library.splice(index, 1);}
-					}
-				})
-			}
-			
-			fac.isVideoInLibrary = function(video){
-				var inLibrary;
-				if(library.length==0){inLibrary=false}
-				else(
-					angular.forEach(library, function(libraryVideo){
-						if(video.id.videoId==libraryVideo.id){inLibrary=true;}
-						else(inLibrary=false)
-					})
-				)
-				return inLibrary
-			}
+	   
 				
 	    fac.getResults = function () {
 	        return results;
 	      };
 			
-			fac.getLibrary = function () {
-	        return library;
-	      };
-						
 			
 		
 		return fac;
 				
 	});
 
+
+app.factory('LibraryServices', function($http){
+   
+		var fac ={};
+		
+		library =[]			
+	 
+	 
+	 fac.addToLibrary = function(resultVideo){
+	  library.push(resultVideo)
+		return library;
+	  };
+		
+		fac.setVideoInLibraryStatus = function(libraryVideo){
+			angular.forEach(results, function(resultsVideo){
+				if(resultsVideo.id == libraryVideo.id){
+					resultsVideo.inLibrary = false;
+				}
+			})
+		}
+		
+		fac.removeFromLibrary = function(libraryVideo){
+			angular.forEach(library, function(video){
+				if(video.id == libraryVideo.id){
+					index = library.indexOf(video)
+					if (index > -1) {library.splice(index, 1);}
+				}
+			})
+		}
+		
+		fac.isVideoInLibrary = function(video){
+			var inLibrary;
+			if(library.length==0){inLibrary=false}
+			else(
+				angular.forEach(library, function(libraryVideo){
+					if(video.id.videoId==libraryVideo.id){inLibrary=true;}
+					else(inLibrary=false)
+				})
+			)
+			return inLibrary
+		}
+		
+		fac.getLibrary = function () {
+        return library;
+      };
+					
+			return fac;
+		
+	})

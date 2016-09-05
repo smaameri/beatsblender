@@ -136,17 +136,15 @@ body{
 			position:absolute;
 			float:right;
 			top:50px;
-			right:50px;
+			right:90px;
 	    width: 28px;
 	    height: 28px;
 			padding-left:0px;
 	    padding-top: 10px;
-			border:2px solid;
-			border-radius:50%;
 			color:@brand-success;
 			font-weight:bold;
 	    text-align: center;
-	    font-size:24px;
+	    font-size:18px;
 			line-height:0;
 			vertical-align: middle;
 			cursor: pointer;
@@ -155,20 +153,29 @@ body{
 			
 		}
 		.addbutton:hover{
-			color:darken(@brand-success,20%);
 		}
 		
 		.resultRemoveButton{
 			color:@brand-danger;			
 		}
 		.resultRemoveButton:hover{
-			color:darken(@brand-danger,20%)
 		}
 	}
 	.video:nth-child(even){
 		background:#f5f5f5;
 	}
 	.video:hover{
+		background:@gray-lighter;
+		cursor: pointer;
+		cursor: hand;
+		
+		.addbutton{
+			color:darken(@brand-success,20%);
+		}
+		
+		.resultRemoveButton{
+			color:darken(@brand-danger,20%)
+		}
 		
 	}
 	
@@ -229,8 +236,6 @@ body{
 			text-align: center;
 	    width: 28px;
 	    height: 28px;
-			border:2px solid;
-			border-radius:50%;
 			color:@brand-danger;
 			font-weight:bold;
 	    text-align: center;
