@@ -1,5 +1,5 @@
 
-	app.controller('MainController', function($scope, $q, YoutubeFactory, LibraryServices){
+	app.controller('MainController', function($scope, $q, $cookieStore, YoutubeFactory){
 		
 		var videoViews = [];
 		
@@ -9,21 +9,29 @@
 						
 		$scope.videoOrderBy = '';
 		
-						
+		$scope.query = 'Eminem';
+		
+		
+		
 		change = function(){
 			videoInLibrary = true;
 		}
 			
-		init();				
+		init();
+		
+		function hello(){
+			console.log('hello');
+		}
 		
     function init() {
-      $scope.library = LibraryServices.getLibrary();
+      $scope.library = YoutubeFactory.getLibrary();
+      $scope.cookieLibrary = YoutubeFactory.getCookieLibrary();
       $scope.results = YoutubeFactory.getResults();
+			YoutubeFactory.generateLibraryFromCookie();
     };
 							
 		$scope.search = function(query){
 			$scope.results.length=0;
-			$scope.videoDetails=false;
 			YoutubeFactory.getVideo(query);
 			$scope.resultsAvailable=true;
 			$scope.searchType = 'Search results';
@@ -31,19 +39,19 @@
 						
 		$scope.add = function(resultsVideo){
 				if(resultsVideo.inLibrary == false){
-						LibraryServices.addToLibrary(resultsVideo);
+						YoutubeFactory.addToLibrary(resultsVideo);
 						resultsVideo.inLibrary = true;
 						$scope.libraryStock = true;
 				  }
-					else(this.remove(resultsVideo));		
+					else(this.remove(resultsVideo));
 			}
-			
+
 			$scope.remove = function(libraryVideo){
-				LibraryServices.removeFromLibrary(libraryVideo);
-				LibraryServices.setVideoInLibraryStatus(libraryVideo);
+				YoutubeFactory.removeFromLibrary(libraryVideo);
+				YoutubeFactory.setVideoInLibraryStatus(libraryVideo);
 				if($scope.library.length==0){$scope.libraryStock=false}				
 			}
-					
+
 			$scope.orderFunction = function(filter, filterReverse){
 				if(filterReverse == true){
 					$scope.filterReverse = false;
@@ -52,14 +60,20 @@
 				$scope.videoOrderBy = filter;
 			}
 			
-			$scope.showVideoDetails = function(video){
+			$scope.showVideoDetails = function(video, libraryVideo){
 				$scope.videoDetails=true;
 				$scope.detail=video;
-				$scope.results.length=0;
-				YoutubeFactory.getVideo(video.id);
+				if(libraryVideo){
+					$scope.libraryPlaylist = true;
+					$scope.results.length=0;
+					YoutubeFactory.getVideo(video.id)
+					$scope.searchType = 'Related Videos';
+				}
+				else{$scope.libraryPlaylist=false}
+				YoutubeFactory.loadVideo(video.id, libraryVideo);
 				$scope.resultsAvailable=true;
-				$scope.searchType = 'Related Videos';				
 			}
+			
 				
 	})
 	

@@ -6834,6 +6834,13 @@ html {
   font-weight: bold;
   color: #555555;
 }
+#results .video .playButton {
+  float: right;
+  font-weight: bold;
+  font-size: 18px;
+  cursor: pointer;
+  cursor: hand;
+}
 #results .video .addButton,
 #results .video .resultRemoveButton {
   position: absolute;

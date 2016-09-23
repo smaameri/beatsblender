@@ -4,6 +4,7 @@
 
 	<script src="{{ url_for('static', filename='js/angular.min.js')  }}"></script>
 	<script src="{{ url_for('static', filename='js/angular-route.min.js')  }}"></script>
+	<script src="{{ url_for('static', filename='js/angular-cookies.min.js')  }}"></script>
 	
 	<link rel="stylesheet" href="{{ url_for('static', filename='less/styles.css') }}">
 	
@@ -17,12 +18,11 @@
 	<div id='landing' data-ng-show="!videoDetails && !resultsAvailable">
 			<h1>Search for your favourite music</h1>
 	</div>
-				
 		<div class="row" id='main'>
 		  <div class="col-md-8" id="results-column">
 				<div id="tv" data-ng-show="videoDetails">	
 					<div id='videoDetails' >
-	          <img class="detail-image" data-ng-src="{{ '{{ detail.thumbnail }}' }}">
+						<div id="player" class='detail-image'></div>
 	          <p class="detail-title">{{ '{{ detail.title }}' }}</p>
 	          <p class="detail-author">{{ '{{ detail.author }}' }}</p>
 	          <p class="detail-description">{{ '{{ detail.description }}' }}</p>
@@ -44,7 +44,7 @@
 				<div id="results_bar" >	
 					
 			    <div id="results">
-		        <div class="video" data-ng-repeat="video in results| orderBy:videoOrderBy:filterReverse" data-ng-click="add(video)">
+		        <div class="video" data-ng-repeat="video in results| orderBy:videoOrderBy:filterReverse">
 		          <img class="video-image" data-ng-src="{{ '{{ video.thumbnail }}' }}">
 		          <p class="video-title">{{ '{{ video.title }}' }}</p>
 		          <p class="video-author">{{ '{{ video.author }}' }}</p>
@@ -52,8 +52,10 @@
 		          <p class="video-views"><span>Views:</span> {{ '{{ video.viewCount }}' }}</p>
 		          <p class="video-likes"><span>Likes:</span> {{ '{{ video.likeCount }}' }}</p>
 		          <p class="video-uploaded"><span>Uploaded:</span> {{ '{{ video.publishedAt }}' }}</p>
-							<p class='addButton' data-ng-show="!video.inLibrary" >Add</p>
-							<p class='resultRemoveButton' data-ng-show="video.inLibrary">Remove</p>															
+							<p class='playButton' data-ng-click="showVideoDetails(video,false)">Play</p>
+							
+							<p class='addButton' data-ng-click="add(video)" data-ng-show="!video.inLibrary" >Add</p>
+							<p class='resultRemoveButton' data-ng-click="remove(video)" data-ng-show="video.inLibrary">Remove</p>															
 																						
 			      </div>
 			    </div>
@@ -66,7 +68,7 @@
 				<h4 data-ng-show="!libraryStock">Your library is empty. Add some videos!</h4>
 		  	<div class='library-videos' data-ng-repeat="video in library">
 					<p class='removeButton' data-ng-click="remove(video)"  >&#10007</p>
-					<p class='libraryVideo' data-ng-click="showVideoDetails(video)">{{ '{{ video.title }}' }}</p>
+					<p class='libraryVideo' data-ng-click="showVideoDetails(video,true)">{{ '{{ video.title }}' }}</p>
 																			
 				</div>
 		  </div>
@@ -75,7 +77,14 @@
 
 <script type="text/javascript">
 	
-	var app = angular.module('mainApp', []);
+	var app = angular.module('mainApp', ['ngCookies']);
+	
+	app.run(function () {
+	  var tag = document.createElement('script');
+	  tag.src = "http://www.youtube.com/iframe_api";
+	  var firstScriptTag = document.getElementsByTagName('script')[0];
+	  firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+	});
 
 </script>
 	<script src="{{ url_for('static', filename='js/controller.js')  }}"></script>
