@@ -1,5 +1,5 @@
 
-	app.controller('MainController', function($scope, $q, $cookieStore, YoutubeFactory){
+	app.controller('MainController', function($scope, $q, $cookieStore, $state, YoutubeFactory){
 		
 		var videoViews = [];
 		
@@ -25,18 +25,13 @@
       $scope.results = YoutubeFactory.getResults();
 			YoutubeFactory.generateLibraryFromCookie();
       $scope.cookieVideo = YoutubeFactory.getCookieVideo();			
-			console.log('$scope.cookieVideo');
-			console.log($scope.cookieVideo);
 			
 			if($scope.libraryStock==true){
 				$scope.resultsAvailable = true
-				console.log($scope.library.first);
 				$scope.videoDetails=true;
 				$scope.detail=YoutubeFactory.getCookieVideo();
 								
 			}
-			console.log('$scope.library');
-			console.log($scope.library);
 	  };
 							
 		$scope.search = function(query){
@@ -44,6 +39,7 @@
 			YoutubeFactory.getVideo(query);
 			$scope.resultsAvailable=true;
 			$scope.searchType = 'Search results';
+			$state.go('home');
 		}		
 						
 		$scope.add = function(resultsVideo){
@@ -76,8 +72,6 @@
 			$scope.showVideoDetails = function(video, libraryVideo){
 				$scope.videoDetails=true;
 				$scope.detail=YoutubeFactory.getDetail(video);
-				console.log('$scope.detail');
-				console.log($scope.detail);
 				if(libraryVideo){
 					$scope.libraryPlaylist = true;
 					$scope.results.length=0;
