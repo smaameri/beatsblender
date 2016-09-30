@@ -106,8 +106,11 @@ body{
 		}
 		.video-title{
 			font-size:18px;
+			
 		}
 		.video-author{
+			color:@blue;
+			
 			
 		}
 		.video-description{
@@ -132,34 +135,30 @@ body{
 			
 		}
 		
-		.playButton{
+		.button-controllers{
 			float:right;
+			margin-right:20px;
+			
+			.playButton{				
 			font-weight:bold;
-	    font-size:18px;
+	    font-size:16px;
 			cursor: pointer;
 			cursor: hand;
-			
+			color:@gray;
 		}
-		
 		.addButton, .resultRemoveButton{
-			position:absolute;
-			float:right;
-			top:50px;
-			right:90px;
-	    width: 28px;
-	    height: 28px;
-			padding-left:0px;
-	    padding-top: 10px;
 			color:@brand-success;
 			font-weight:bold;
 	    text-align: center;
-	    font-size:18px;
-			line-height:0;
-			vertical-align: middle;
+	    font-size:16px;
 			cursor: pointer;
 			cursor: hand;
-			
-			
+		}
+		.addButton{
+			padding-left:40px;
+		}
+		.resultRemoveButton{
+			padding-left:8px;
 		}
 		.addbutton:hover{
 		}
@@ -170,13 +169,12 @@ body{
 		.resultRemoveButton:hover{
 		}
 	}
+	}
 	.video:nth-child(even){
 		background:#f5f5f5;
 	}
 	.video:hover{
 		background:@gray-lighter;
-		cursor: pointer;
-		cursor: hand;
 		
 		.addbutton{
 			color:darken(@brand-success,20%);
@@ -240,7 +238,7 @@ body{
 			color: #ac0809;
 			position:relative;
 			float:right;
-			top:16px;
+			top:20px;
 			right:26px;
 			text-align: center;
 	    width: 28px;
@@ -248,7 +246,7 @@ body{
 			color:@brand-danger;
 			font-weight:bold;
 	    text-align: center;
-	    font-size:24px;
+	    font-size:14px;
 			line-height:0.9;
 			vertical-align: middle;
 			cursor: pointer;
@@ -266,7 +264,7 @@ body{
 
 #tv{
 	float:center;
-	padding-top:40px;
+	padding-top:0px;
 	padding-bottom:30px;
 	
 	border:solid 10px @gray-lighter;
@@ -279,13 +277,14 @@ body{
 #videoDetails{
 	min-height:360px;
 	
-		padding-left:550px;
+		padding-left:10px;
+		margin:auto;
 	
 		.detail-image{
-			left:60px;
-			position:absolute;
+			position:relative;
 		}
 		.detail-title{
+			margin-top:10px;
 			font-size:18px;
 			color:@blue;
 		}
@@ -297,15 +296,14 @@ body{
 			font-weight:normal;
 		}
 		.detail-views{
-			margin-right:20px;
-			span{color:@blue}
+			margin-right:16px;
+			span{color:@blue};
+			float:left;
 		}
-
 		.detail-likes{
 			margin-right:20px;
-			span{color:@blue}
-			
-			
+			span{color:@blue};
+			float:left;
 		}
 		.detail-uploaded{
 			span{color:@blue}

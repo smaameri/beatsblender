@@ -11,7 +11,18 @@ app.factory('YoutubeFactory', function($http, $log, $window, $cookieStore){
 		
 		var libraryVideoPlaying;
 		
-		var playlist;		
+		var libraryStock = false;
+		
+		var playlist;	
+		
+		var library = []
+		
+		var cookieLibrary = []
+		
+		var detailLanding = []
+		
+		var detail = []
+	 	
 		
 	  var youtube = {
 	    ready: false,
@@ -86,7 +97,6 @@ app.factory('YoutubeFactory', function($http, $log, $window, $cookieStore){
 	      }
 				else{
 					youtube.player = fac.createPlayer(videoId);
-					console.log(youtube.player);
 				}
     }
 		
@@ -149,8 +159,28 @@ app.factory('YoutubeFactory', function($http, $log, $window, $cookieStore){
 				        author: data.snippet.channelTitle,
 								publishedAt:data.snippet.publishedAt.slice(0,-14),
 			        });
+						
+						cookieVideo = lib[0]
+							
+						console.log('cookieDetail');
+						console.log(cookieVideo);
+						
 			      return lib;
 			    };
+					
+				  fac.listDetailVideo = function(data){
+						console.log('data');
+						console.log(data);
+						detail = {
+				          id: data.id.videoId,
+				          title: data.snippet.title, 
+					        description: data.snippet.description,
+					        thumbnail: data.snippet.thumbnails.high.url,
+					        author: data.snippet.channelTitle,
+									publishedAt:data.snippet.publishedAt.slice(0,-14),
+				        };
+				      return detail;
+				    };
 		
 				fac.getStatistics = function(video){
 					this.views(video.id.videoId).then(function(response2){
@@ -176,17 +206,39 @@ app.factory('YoutubeFactory', function($http, $log, $window, $cookieStore){
 	    fac.getResults = function () {
 	        return results;
 	      };
+				
+		  fac.getDetail = function (video) {
+				detail = video;
+						return detail;
+		      };
+			
+		  fac.getCookieVideo = function () {
+				return cookieVideo;
+		      };
+			
+				
+			fac.setDetail = function(video){
+				detail = video;
+				return detail
+					}
+			
+			fac.setDetail2 = function(videoId){
+				console.log('boo');
+				console.log(videoId);
+				fac.search(videoId,1).then(function(videoResponse){
+					fac.listDetailVideo(videoResponse.data.items[0]);
+					console.log('boo2');
+					console.log(detail);
+				}), function(error){$log.info("Unable to load videos")};
+				return detail
+		}
 
-		var library = []
-		
-		var cookieLibrary = []
-	 
+	
 	 fac.addToLibrary = function(resultVideo){
 		library.push(resultVideo);
 		cookieLibrary.push(resultVideo.id);
-		console.log(cookieLibrary);
 		$cookieStore.put('library', cookieLibrary);
-		return library;
+		return library
 	  };
 		
 		fac.setVideoInLibraryStatus = function(libraryVideo){
@@ -198,7 +250,9 @@ app.factory('YoutubeFactory', function($http, $log, $window, $cookieStore){
 		}
 		
 		fac.removeFromLibrary = function(libraryVideo){
+			console.log(library);
 			angular.forEach(library, function(video){
+				console.log(video);
 				if(video.id == libraryVideo.id){
 					index = library.indexOf(video)
 					if (index > -1) {library.splice(index, 1);}
@@ -211,6 +265,7 @@ app.factory('YoutubeFactory', function($http, $log, $window, $cookieStore){
 				}
 			})
 			$cookieStore.put('library', cookieLibrary);
+			console.log()
 		}
 		
 		fac.isVideoInLibrary = function(video){
@@ -229,14 +284,14 @@ app.factory('YoutubeFactory', function($http, $log, $window, $cookieStore){
 			if(typeof $cookieStore.get('library') != "undefined"){
 				cookieLibrary = $cookieStore.get('library')
 			}
-			console.log('cookieLibrary')
-			console.log(cookieLibrary)
 			
 			return cookieLibrary;
 			
       };
 			
 			var lib = []
+			
+			var cookieVideo = []
 			
 			fac.generateLibraryFromCookie = function(){
 				angular.forEach(cookieLibrary, function(videoId){
@@ -246,17 +301,14 @@ app.factory('YoutubeFactory', function($http, $log, $window, $cookieStore){
 						});
 					}), function(error){$log.info("Unable to load videos")};
 				})
-			console.log('lib');
-			console.log(lib);
 			return lib
 			}
 		
 		fac.getLibrary = function () {
-			if(typeof $cookieStore.get('library') != "undefined"){
+			if(typeof $cookieStore.get('library') != "undefined"){				
 				library = lib;
 			}
-				
-				return library;
+			return library;
       };
 			
 		return fac;

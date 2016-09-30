@@ -6808,6 +6808,9 @@ html {
 #results .video .video-title {
   font-size: 18px;
 }
+#results .video .video-author {
+  color: #47b0e2;
+}
 #results .video .video-description {
   width: 70%;
 }
@@ -6834,33 +6837,33 @@ html {
   font-weight: bold;
   color: #555555;
 }
-#results .video .playButton {
+#results .video .button-controllers {
   float: right;
+  margin-right: 20px;
+}
+#results .video .button-controllers .playButton {
   font-weight: bold;
-  font-size: 18px;
+  font-size: 16px;
   cursor: pointer;
   cursor: hand;
+  color: #555555;
 }
-#results .video .addButton,
-#results .video .resultRemoveButton {
-  position: absolute;
-  float: right;
-  top: 50px;
-  right: 90px;
-  width: 28px;
-  height: 28px;
-  padding-left: 0px;
-  padding-top: 10px;
+#results .video .button-controllers .addButton,
+#results .video .button-controllers .resultRemoveButton {
   color: #5cb85c;
   font-weight: bold;
   text-align: center;
-  font-size: 18px;
-  line-height: 0;
-  vertical-align: middle;
+  font-size: 16px;
   cursor: pointer;
   cursor: hand;
 }
-#results .video .resultRemoveButton {
+#results .video .button-controllers .addButton {
+  padding-left: 40px;
+}
+#results .video .button-controllers .resultRemoveButton {
+  padding-left: 8px;
+}
+#results .video .button-controllers .resultRemoveButton {
   color: #d9534f;
 }
 #results .video:nth-child(even) {
@@ -6868,8 +6871,6 @@ html {
 }
 #results .video:hover {
   background: #eeeeee;
-  cursor: pointer;
-  cursor: hand;
 }
 #results .video:hover .addbutton {
   color: #357935;
@@ -6909,14 +6910,14 @@ html {
   color: #ac0809;
   position: relative;
   float: right;
-  top: 16px;
+  top: 20px;
   right: 26px;
   width: 28px;
   height: 28px;
   color: #d9534f;
   font-weight: bold;
   text-align: center;
-  font-size: 24px;
+  font-size: 14px;
   line-height: 0.9;
   vertical-align: middle;
   cursor: pointer;
@@ -6927,7 +6928,7 @@ html {
 }
 #tv {
   float: center;
-  padding-top: 40px;
+  padding-top: 0px;
   padding-bottom: 30px;
   border: solid 10px #eeeeee;
   background: #333333;
@@ -6935,13 +6936,14 @@ html {
 }
 #videoDetails {
   min-height: 360px;
-  padding-left: 550px;
+  padding-left: 10px;
+  margin: auto;
 }
 #videoDetails .detail-image {
-  left: 60px;
-  position: absolute;
+  position: relative;
 }
 #videoDetails .detail-title {
+  margin-top: 10px;
   font-size: 18px;
   color: #47b0e2;
 }
@@ -6950,13 +6952,15 @@ html {
   font-weight: normal;
 }
 #videoDetails .detail-views {
-  margin-right: 20px;
+  margin-right: 16px;
+  float: left;
 }
 #videoDetails .detail-views span {
   color: #47b0e2;
 }
 #videoDetails .detail-likes {
   margin-right: 20px;
+  float: left;
 }
 #videoDetails .detail-likes span {
   color: #47b0e2;
