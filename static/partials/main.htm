@@ -1,11 +1,8 @@
-<div ui-view="search"></div>
-<div ui-view="landing"></div>
 
-<div class="row" id='main'>
-  <div class="col-md-7" id="results-column">
-		<div ui-view="details"></div>
-    <div ui-view="sort"></div>
-    <div ui-view="results"></div>				
-	</div>
-	<div ui-view="library"></div>				
-</div>
+<form ng-submit='search()'>
+	<input type='text' ng-model='query'/>
+</form>
+<ul ng-repeat="video in results">
+	<li>{{video.title}}, Views: {{video.viewCount}}</li>	
+</ul>
+
