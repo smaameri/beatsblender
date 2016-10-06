@@ -6,8 +6,8 @@ app.config(function($stateProvider, $urlRouterProvider) {
   
   $stateProvider
 
-	.state('index', {
-		url: '/',
+	.state('test', {
+		url: '/test',
 		templateUrl: 'static/partials/main.htm',
 		controller : 'MainController',
 		resolve:{
@@ -15,19 +15,40 @@ app.config(function($stateProvider, $urlRouterProvider) {
 		    return messageService.getMessage();
        },
        videos: function(youtube){
-           return youtube.getVideos();
+           return
+					 //return youtube.getVideos('eminem', 20);
        }
 		}
 	})
+	
+	.state('index', {
+	    url: '/',
+	
+	    views: {
+	        // the main template will be placed here (relatively named)
+	        '': { templateUrl: 'static/partials/main.htm',
+				 				controller : 'MainController', 
+							resolve:{
+					       videos: function(YoutubeFactory){
+									 return fac.getCookieLibrary();
+										 //return youtube.getVideos('eminem', 20, 'library', false);
+					       }
+							}
+						},
+
+	        'search@index': { templateUrl: 'static/partials/search.htm' },
+	        'results@index': { templateUrl: 'static/partials/results.htm' },
+	        'library@index': { templateUrl: 'static/partials/library.htm' },
+	        'details@index': { templateUrl: 'static/partials/details.htm' },
+						
+						
+	    },
+		});
 
 });
 
 app.run(function ($cookieStore, $state) {
-  var tag = document.createElement('script');
-  tag.src = "http://www.youtube.com/iframe_api";
-  var firstScriptTag = document.getElementsByTagName('script')[0];
-  firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+  //This code loads the IFrame Player API code asynchronously.
 	
-		
 });
 

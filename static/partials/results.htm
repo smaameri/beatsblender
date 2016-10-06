@@ -1,0 +1,20 @@
+<div id="results_bar" >	
+  <div id="results">
+    <div class="video" data-ng-repeat="video in results| orderBy:videoOrderBy:filterReverse">
+      <img class="video-image" data-ng-src="{{ video.thumbnail }}">
+      <p class="video-title">{{ video.title }}</p>
+      <p class="video-author">{{ video.author }}</p>
+      <p class="video-views"><span>Views:</span> {{ video.viewCount }}</p>
+      <p class="video-likes"><span>Likes:</span> {{ video.likeCount }}</p>
+      <p class="video-uploaded"><span>Uploaded:</span> {{ video.publishedAt }}</p>
+			<div class="button-controllers">
+				<p>
+					<span class='playButton' data-ng-click="showVideoDetails(video,false)">Play</span>
+					<span class='addButton' data-ng-click="add(video)" data-ng-show="!video.inLibrary" >Add</span>
+					<span class='resultRemoveButton' data-ng-click="remove(video)" data-ng-show="video.inLibrary">Remove</span>
+				</p>
+		</div>
+		</div>
+  </div>
+	
+</div>
