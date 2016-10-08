@@ -25,6 +25,8 @@ app.controller('MainController', function($scope, YoutubeFactory, YoutubePlayer)
 		
 	$scope.remove = function(libraryVideo){
 		YoutubeFactory.removeFromLibrary(libraryVideo);
+		if($scope.library.length == 0)
+			$scope.libraryStock = false;
 	}
 	
 	$scope.play = function(video, list){
