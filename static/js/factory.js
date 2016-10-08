@@ -40,10 +40,7 @@ app.factory('YoutubePlayer', function($log, $window){
 	}
 	
 	youtubePlayer.playerInit = function(videoId){
-		console.log(videoId)
 		player = youtubePlayer.createPlayer(videoId);
-		console.log(player)
-		console.log(player.a)  
 		return player
 	}
 
@@ -90,17 +87,7 @@ app.factory('YoutubePlayer', function($log, $window){
   }
 	
 	youtubePlayer.play = function(videoId){
-		this.check();
 		player.loadVideoById(videoId);
-	}
-	
-	youtubePlayer.check = function(){
-		console.log(player)
-		if(player == null)
-			{player = this.createPlayer(store.library[0].id);
-		console.log('boo')
-			}
-		return player
 	}
 	
 	
@@ -164,20 +151,19 @@ app.factory('YoutubeFactory', function($http, $q, $cookieStore, $window, $log, Y
 			}
   }
 	
-				
+	fac.resetList = function(reset, list){
+		if(reset)
+		store[list].length = 0
+	}
+		
 		fac.getAllVideos = function(query, maxResults, list, reset){
+			this.resetList(reset, list)
 			return YoutubeAPI.youtubeSearch(query, maxResults)
 				.then(function(videos){
-					if(reset)
-						store[list].length = 0;
 					angular.forEach(videos.data.items, function(video){
-						var data = fac.addData(video)
-						store[list].push(data)
+						store[list].push(fac.addData(video))
 					})
-					return store[list]
-				})
-				.then(function(response){
-					fac.getAllStats(response)
+					fac.getAllStats(store[list])
 					return store[list]
 				})
 		}
@@ -187,8 +173,6 @@ app.factory('YoutubeFactory', function($http, $q, $cookieStore, $window, $log, Y
 				angular.forEach(videos, function(video){
 					youtubeStatisticsPromises.push(YoutubeAPI.getStats(video))
 				})
-				//once all the statistcs promises have been resolved,
-				//return all the promises together
 				return $q.all(youtubeStatisticsPromises).then(function(response){
 					return response
 				});
@@ -242,17 +226,23 @@ app.factory('YoutubeFactory', function($http, $q, $cookieStore, $window, $log, Y
 			console.log('removed');
 					
 		}
+
 		
     fac.getCookieLibrary = function(){
 			if(typeof $cookieStore.get('library') != "undefined"){
+				libraryStock = true;
 				var PromiseList = [];
 				store.cookieLibrary = $cookieStore.get('library');
 				angular.forEach(store.cookieLibrary, function(videoId){
-					PromiseList.push(fac.getAllVideos(videoId, 1, 'library', false));
-					libraryStock = true;
+					PromiseList.push(YoutubeAPI.youtubeSearch(videoId, 1).then(function(response){
+						video = fac.addData(response.data.items[0])
+						YoutubeAPI.getStats(video)
+						return video
+						}));
 					})
 				}
 			return $q.all(PromiseList).then(function(response){
+				store.library = response
 				return response
 				})		
 		}			
