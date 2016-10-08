@@ -10,9 +10,7 @@ app.controller('MainController', function($scope, YoutubeFactory, YoutubePlayer)
 	}	
 	
 	init()
-	
-	$scope.query='eminem';
-			
+				
 	$scope.search = function(query){
 		YoutubeFactory.getAllVideos(query, 10, 'results', true)
 	}
