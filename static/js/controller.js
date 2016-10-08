@@ -13,9 +13,8 @@ app.controller('MainController', function($scope, YoutubeFactory, YoutubePlayer)
 	
 	$scope.query='eminem';
 			
-	$scope.search = function(){
-		$scope.library.results = 0;
-		YoutubeFactory.getAllVideos($scope.query, 10, 'results', true)
+	$scope.search = function(query){
+		YoutubeFactory.getAllVideos(query, 10, 'results', true)
 	}
 	
 	$scope.add = function(resultsVideo){
@@ -30,9 +29,34 @@ app.controller('MainController', function($scope, YoutubeFactory, YoutubePlayer)
 		YoutubeFactory.removeFromLibrary(libraryVideo);
 	}
 	
-	$scope.play = function(video){
-		YoutubePlayer.play(video.id);
-		$scope.detail  = video;
+	$scope.play = function(video, list){
+		YoutubePlayer.loadVideo(video, list);
+		$scope.detail = video;
+		console.log(video)
 	}
 
+  youtubePlayer.createPlayer = function (videoId){
+		return new YT.Player('player', {
+        height: '390',
+        width: '640',
+        videoId: videoId,
+        events: {
+          'onReady': YoutubePlayer.onPlayerReady,
+          'onStateChange': onPlayerStateChange
+        }
+      });
+  };
+	
+  function onPlayerStateChange(event){
+    if (event.data == YT.PlayerState.PLAYING) {
+			console.log('playing');
+    } else if (event.data == YT.PlayerState.PAUSED) {
+			console.log('paused');
+    } else if (event.data == YT.PlayerState.ENDED) {
+			console.log('ended');
+      fac.nextVideo()
+			$scope.detail = store.detail;
+			$scope.$apply()
+    }			
+  }
 })

@@ -9,7 +9,7 @@
       <p class="video-uploaded"><span>Uploaded:</span> {{ video.publishedAt }}</p>
 			<div class="button-controllers">
 				<p>
-					<span class='playButton' data-ng-click="showVideoDetails(video,false)">Play</span>
+					<span class='playButton' data-ng-click="play(video, 'results')">Play</span>
 					<span class='addButton' data-ng-click="add(video)" data-ng-show="!video.inLibrary" >Add</span>
 					<span class='resultRemoveButton' data-ng-click="remove(video)" data-ng-show="video.inLibrary">Remove</span>
 				</p>

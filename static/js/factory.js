@@ -8,8 +8,6 @@ app.factory("youtube", function($q, YoutubeFactory){
 
 app.factory('YoutubePlayer', function($log, $window){
 	
-	
-	
 	youtubePlayer = {};
 	
 	var player = null;
@@ -29,7 +27,8 @@ app.factory('YoutubePlayer', function($log, $window){
 	$window.onYouTubeIframeAPIReady = function(){
     $log.info('Youtube API is ready');
     youtube.ready = true;
-		youtubePlayer.playerInit(store.library[0].id);
+		youtubePlayer.playerInit(store.init.id);
+		console.log(store.library[0]);
   }
 	
 	youtubePlayer.youtubeAPIInit = function(){
@@ -44,35 +43,10 @@ app.factory('YoutubePlayer', function($log, $window){
 		return player
 	}
 
-  youtubePlayer.createPlayer = function (videoId) {
-		return new YT.Player('player', {
-        height: '390',
-        width: '640',
-        videoId: videoId,
-        events: {
-          'onReady': onPlayerReady,
-          'onStateChange': onPlayerStateChange
-        }
-      });
-  };
-	
-  function onPlayerStateChange(event) {
-    if (event.data == YT.PlayerState.PLAYING) {
-      youtube.state = 'playing';
-			console.log('playing');
-    } else if (event.data == YT.PlayerState.PAUSED) {
-      youtube.state = 'paused';
-			console.log('paused');
-    } else if (event.data == YT.PlayerState.ENDED) {
-      youtube.state = 'ended';
-			console.log('ended');
-      nextVideo(nowPlaying)
-    }			
+  youtubePlayer.onPlayerReady = function(event) {
+    //event.target.playVideo();
   }
 	
-  function onPlayerReady(event) {
-    event.target.playVideo();
-  }
 	
 	youtubePlayer.loadVideo = function(videoId, libraryVideo){
 		libraryVideoPlaying = libraryVideo;
@@ -90,16 +64,20 @@ app.factory('YoutubePlayer', function($log, $window){
 		player.loadVideoById(videoId);
 	}
 	
+	youtubePlayer.loadVideo = function(video, list){
+		this.play(video.id);
+		nowPlaying.id = video.id;
+		nowPlaying.playlist = list;
+		console.log(nowPlaying);
+	}
 	
 	return youtubePlayer
-	
 })
 
 app.factory('YoutubeFactory', function($http, $q, $cookieStore, $window, $log, YoutubeAPI, YoutubePlayer){
 	
 	fac = {}
 	
-	var detail;
 	
 	var results = []
 	
@@ -112,32 +90,44 @@ app.factory('YoutubeFactory', function($http, $q, $cookieStore, $window, $log, Y
 	store = {
 		results:[],
 		library:[],
-		cookieLibrary:[]
+		cookieLibrary:[],
+		detail: null,
+		init:{}
+	}
+	
+	nowPlaying = {
+		id:null,
+		playlist:'library',
 	}
 	
 	
+	var init_song = {
+		id: "_Yhyp-_hX2s",
+		title: "Eminem - Lose Yourself [HD]",
+		thumbnail: "https://i.ytimg.com/vi/_Yhyp-_hX2s/hqdefault.jpg",
+		author: "msvogue23",
+		publishedAt: "2015-08-07",
+		viewCount:"53,326,687",
+		likeCount:"237,867"
+	}
+	
 
-	function nextVideo(videoId){
-		if(libraryVideoPlaying){
-			playlist = library;
-		}
-		else{playlist = results}
-		
+	 fac.nextVideo = function(){
 		var nextVideoIndex;
+		var playlist = store[nowPlaying.playlist]
 		angular.forEach(playlist, function(video){
-			if(videoId == video.id){
+			if(nowPlaying.id == video.id){
 				var index = playlist.indexOf(video)
-				if(index < playlist.length - 1){
+				if(index < playlist.length - 1)
 					nextVideoIndex = index + 1;
-				}
-				else{nextVideoIndex = 0}
+				else
+					nextVideoIndex = 0
 			}
 		})
-		nowPlaying = playlist[nextVideoIndex].id
-    youtube.player.loadVideoById(nowPlaying);
+		nowPlaying.id = playlist[nextVideoIndex].id
+		store.detail  = playlist[nextVideoIndex]
+    YoutubePlayer.play(nowPlaying.id);
 	}
-	
-
 	
 	fac.loadVideo = function(videoId, libraryVideo){
 		libraryVideoPlaying = libraryVideo;
@@ -161,7 +151,7 @@ app.factory('YoutubeFactory', function($http, $q, $cookieStore, $window, $log, Y
 			return YoutubeAPI.youtubeSearch(query, maxResults)
 				.then(function(videos){
 					angular.forEach(videos.data.items, function(video){
-						store[list].push(fac.addData(video))
+						store[list].push(fac.addData(video, list))
 					})
 					fac.getAllStats(store[list])
 					return store[list]
@@ -178,15 +168,26 @@ app.factory('YoutubeFactory', function($http, $q, $cookieStore, $window, $log, Y
 				});
 			}
 		
-		fac.addData = function(video){
+		fac.addData = function(video, list){
 			var data;
+			console.log(list)
+			var inLibrary = false;
+			if(list == 'results'){
+				angular.forEach(store.library, function(libraryVideo){
+					console.log(video.id)
+					if(video.id.videoId == libraryVideo.id)
+						inLibrary = true;
+					console.log(inLibrary);
+				})
+			}
+			
 			return data = {
 				id: video.id.videoId,
 				title: video.snippet.title,
         thumbnail: video.snippet.thumbnails.high.url,
         author: video.snippet.channelTitle,
 				publishedAt:video.snippet.publishedAt.slice(0,-14),
-				inLibrary: false
+				inLibrary: inLibrary
 			}
 		}
 		
@@ -241,8 +242,19 @@ app.factory('YoutubeFactory', function($http, $q, $cookieStore, $window, $log, Y
 						}));
 					})
 				}
+			else
+				return YoutubeAPI.youtubeSearch('lUuOIU6u6oU', 1).then(function(response){
+						video = fac.addData(response.data.items[0])
+						YoutubeAPI.getStats(video)
+						console.log(video)
+						store.init = video
+						store.detail = video
+						return video
+				});
 			return $q.all(PromiseList).then(function(response){
 				store.library = response
+				store.init = response[0]
+				nowPlaying.id = store.init.id
 				return response
 				})		
 		}			
@@ -260,8 +272,8 @@ app.factory('YoutubeFactory', function($http, $q, $cookieStore, $window, $log, Y
 		}
 		
 		fac.getDetail = function(){
-			detail = store.library[0];
-			return detail
+			store.detail = store.init;
+			return store.detail
 		}
 		
 			
