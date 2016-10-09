@@ -5,33 +5,16 @@ app.config(function($stateProvider, $urlRouterProvider) {
   $urlRouterProvider.otherwise('/');
   
   $stateProvider
-
-	.state('test', {
-		url: '/test',
-		templateUrl: 'static/partials/main.htm',
-		controller : 'MainController',
-		resolve:{
-		  message: function(messageService){
-		    return messageService.getMessage();
-       },
-       videos: function(youtube){
-           return
-					 //return youtube.getVideos('eminem', 20);
-       }
-		}
-	})
 	
 	.state('index', {
 	    url: '/',
 	
 	    views: {
-	        // the main template will be placed here (relatively named)
 	        '': { templateUrl: 'static/partials/main.htm',
 				 				controller : 'MainController', 
 							resolve:{
 					       videos: function(YoutubeFactory){
 									 return fac.getCookieLibrary();
-										 //return youtube.getVideos('eminem', 20, 'library', false);
 					       }
 							}
 						},
@@ -47,8 +30,7 @@ app.config(function($stateProvider, $urlRouterProvider) {
 
 });
 
-app.run(function ($cookieStore, $state) {
-  //This code loads the IFrame Player API code asynchronously.
+app.run(function() {
 	
 });
 
