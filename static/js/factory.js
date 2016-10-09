@@ -98,19 +98,7 @@ app.factory('YoutubeFactory', function($http, $q, $cookieStore, $window, $log, Y
 	nowPlaying = {
 		id:null,
 		playlist:'library',
-	}
-	
-	
-	var init_song = {
-		id: "_Yhyp-_hX2s",
-		title: "Eminem - Lose Yourself [HD]",
-		thumbnail: "https://i.ytimg.com/vi/_Yhyp-_hX2s/hqdefault.jpg",
-		author: "msvogue23",
-		publishedAt: "2015-08-07",
-		viewCount:"53,326,687",
-		likeCount:"237,867"
-	}
-	
+	}	
 
 	 fac.nextVideo = function(){
 		var nextVideoIndex;
