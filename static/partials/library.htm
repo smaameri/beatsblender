@@ -1,11 +1,10 @@
-	  <div class="col-md-5" id='library-column'>
-		  <div id='library'>
-				<h2>Library</h2>
-				<h4 data-ng-show="!libraryStock">Your library is empty. Add some videos!</h4>
-		  	<div class='library-videos' data-ng-repeat="video in library">
-					<p class='removeButton' data-ng-click="remove(video)"  >&#10005</p>
-					<p class='libraryVideo' data-ng-click="play(video, 'library')">{{ video.title }}</p>
-																			
-				</div>
-		  </div>
+<div class="col-md-6" id='library-column'>
+  <div id='library'>
+		<h2>Library</h2>
+		<h4 data-ng-show="!libraryStock">Your library is empty. Add some videos!</h4>
+  	<div class='library-videos' data-ng-repeat="video in library">
+			<p class='removeButton' data-ng-click="remove(video)"  >&#10005</p>
+			<p class='libraryVideo' data-ng-click="play(video, 'library')">{{ video.title }}</p>
 		</div>
+  </div>
+</div>
