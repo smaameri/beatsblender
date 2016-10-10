@@ -23,12 +23,23 @@ app.factory('YoutubePlayer', function($log, $window){
     state: 'stopped'
   };
 	
+	youtubePlayer.resizePlayer = function(){
+		var videoContainer = angular.element(document.querySelector('#tv'))		
+		var player = angular.element(document.querySelector('#player'))
+		var playerWidth  = videoContainer[0].clientWidth
+		var playerHeight = videoContainer[0].clientWidth*9/16
+		
+		player.css('width', playerWidth)
+		player.css('height', playerHeight);
+	}
+	
 	
 	$window.onYouTubeIframeAPIReady = function(){
     $log.info('Youtube API is ready');
     youtube.ready = true;
 		youtubePlayer.playerInit(store.init.id);
 		console.log(store.library[0]);
+		youtubePlayer.resizePlayer();
   }
 	
 	youtubePlayer.youtubeAPIInit = function(){

@@ -6785,7 +6785,7 @@ html {
   margin-right: 20px;
 }
 #results-column {
-  padding-right: 0px;
+  float: left;
 }
 .border-show {
   border-right: 5px solid #eeeeee;
@@ -6930,13 +6930,15 @@ html {
   float: center;
   padding-top: 0px;
   padding-bottom: 30px;
-  border: solid 10px #eeeeee;
   background: #333333;
   color: white;
 }
+#player {
+  width: 500px;
+  height: 200px;
+}
 #videoDetails {
   min-height: 360px;
-  padding-left: 10px;
   margin: auto;
 }
 #videoDetails .detail-image {
@@ -6989,4 +6991,7 @@ html {
 }
 #videoDetails .resultRemoveButton {
   color: #d9534f;
+}
+#caption {
+  margin-left: 15px;
 }

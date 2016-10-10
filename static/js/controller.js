@@ -1,12 +1,12 @@
-app.controller('MainController', function($scope, YoutubeFactory, YoutubePlayer){
-	
+app.controller('MainController', function($scope, $window, $document, YoutubeFactory, YoutubePlayer){
 		
 	function init(){
 		$scope.library = YoutubeFactory.getLibrary();
 		$scope.results = YoutubeFactory.getResults();
 		$scope.detail  = YoutubeFactory.getDetail();
 		$scope.libraryStock = YoutubeFactory.getLibraryStock();
-		YoutubePlayer.youtubeAPIInit();		
+		YoutubePlayer.youtubeAPIInit();
+		//resizePlayer();
 	}	
 	
 	init()
@@ -34,11 +34,19 @@ app.controller('MainController', function($scope, YoutubeFactory, YoutubePlayer)
 		$scope.detail = video;
 		console.log(video)
 	}
+	
+	console.log('$window.innerWidth');
+	console.log($window.innerWidth);
+	
+	angular.element($window).bind('resize', function(){
+		YoutubePlayer.resizePlayer();
+	})
+	
 
   youtubePlayer.createPlayer = function (videoId){
 		return new YT.Player('player', {
-        height: '390',
-        width: '640',
+        height: '',
+        width: '',
         videoId: videoId,
         events: {
           'onReady': YoutubePlayer.onPlayerReady,
