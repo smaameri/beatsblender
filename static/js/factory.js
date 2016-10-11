@@ -34,12 +34,7 @@ app.factory('YoutubePlayer', function($log, $window){
 		
 	}
 	
-	
-	youtubePlayer.tabButton = function(){
-		var videoDetail = angular.element(document.querySelector('.video-tab'))
-		console.log(videoDetail[0].clientHeight)		
-	}
-	
+		
 	$window.onYouTubeIframeAPIReady = function(){
     $log.info('Youtube API is ready');
     youtube.ready = true;

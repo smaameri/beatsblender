@@ -65,6 +65,8 @@ app.controller('MainController', function($scope, $window, $document, YoutubeFac
 		youtubePlayer.tabButton()
 	})
 
+
+
 	$scope.updateTab = function(){
 		var libraryTab = angular.element(document.querySelector('.library-tab'))		
 		var resultsTab = angular.element(document.querySelector('.results-tab'))		
