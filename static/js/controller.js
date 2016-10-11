@@ -11,12 +11,20 @@ app.controller('MainController', function($scope, $window, $document, YoutubeFac
 	}	
 	
 	init()
-				
+	
+	$(function() {
+	    $('.item').matchHeight(options);
+	});
+	
+	
 	$scope.search = function(query){
 		YoutubeFactory.getAllVideos(query, 10, 'results', true)
 		$scope.showLibrary = false;
 		$scope.resultsInit = true;
 		$scope.updateTab();
+		
+		var searchBar = angular.element(document.querySelector('#query'))
+		searchBar.blur();
 	}
 	
 	$scope.add = function(resultsVideo){
