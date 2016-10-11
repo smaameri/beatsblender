@@ -6784,72 +6784,98 @@ html {
 #sort #sort-filters a {
   margin-right: 20px;
 }
+#tabs {
+  text-align: center;
+}
 #results-column {
   float: left;
 }
 .border-show {
   border-right: 5px solid #eeeeee;
 }
-#results {
-  padding-left: 20px;
+.detail-column {
+  padding-right: 0px;
 }
-#results .video {
+#tabs h2 {
+  margin-bottom: 20px;
+}
+.library-tab {
+  color: #555555;
+  background: #eeeeee;
+}
+.results-tab {
+  background: #555555;
+  color: #bbbbbb;
+}
+.video {
   position: relative;
   padding: 10px;
   padding-left: 140px;
+  border-left: solid 1px #eeeeee;
 }
-#results .video .video-image {
+.video-image {
   float: left;
   left: 10px;
   position: absolute;
   height: 90px;
   width: 120px;
 }
-#results .video .video-title {
+.video-title {
   font-size: 18px;
 }
-#results .video .video-author {
+.video-author {
   color: #47b0e2;
 }
-#results .video .video-description {
+.video-description {
   width: 70%;
 }
-#results .video .video-views {
+.video-views {
   display: inline-block;
   margin-right: 20px;
 }
-#results .video .video-views span {
+.video-views span {
   font-weight: bold;
   color: #555555;
 }
-#results .video .video-likes {
+.video-likes {
   display: inline-block;
   margin-right: 20px;
 }
-#results .video .video-likes span {
+.video-likes span {
   font-weight: bold;
   color: #555555;
 }
-#results .video .video-uploaded {
+.video-uploaded {
   display: inline-block;
 }
-#results .video .video-uploaded span {
+.video-uploaded span {
   font-weight: bold;
   color: #555555;
 }
-#results .video .button-controllers {
-  float: right;
-  margin-right: 20px;
+.video-tab:nth-child(odd) {
+  background: #eeeeee;
 }
-#results .video .button-controllers .playButton {
-  font-weight: bold;
-  font-size: 16px;
-  cursor: pointer;
-  cursor: hand;
-  color: #555555;
+.video-tab:first-child {
+  padding-top: 20px;
 }
-#results .video .button-controllers .addButton,
-#results .video .button-controllers .resultRemoveButton {
+.video:hover {
+  background: #d5d5d5;
+}
+.video:hover .addbutton {
+  color: #357935;
+}
+.video:hover .resultRemoveButton {
+  color: #a02622;
+}
+.button-controllers:hover {
+  background: #d5d5d5;
+}
+.button-controllers {
+  margin-top: 40px;
+  text-align: center;
+}
+.button-controllers .addButton,
+.button-controllers .resultRemoveButton {
   color: #5cb85c;
   font-weight: bold;
   text-align: center;
@@ -6857,29 +6883,11 @@ html {
   cursor: pointer;
   cursor: hand;
 }
-#results .video .button-controllers .addButton {
-  padding-left: 40px;
-}
-#results .video .button-controllers .resultRemoveButton {
+.button-controllers .resultRemoveButton {
   padding-left: 8px;
 }
-#results .video .button-controllers .resultRemoveButton {
+.button-controllers .resultRemoveButton {
   color: #d9534f;
-}
-#results .video:nth-child(even) {
-  background: #f5f5f5;
-}
-#results .video:hover {
-  background: #eeeeee;
-}
-#results .video:hover .addbutton {
-  color: #357935;
-}
-#results .video:hover .resultRemoveButton {
-  color: #a02622;
-}
-#library-column {
-  padding-left: 0px;
 }
 #library h2 {
   margin-left: 20px;

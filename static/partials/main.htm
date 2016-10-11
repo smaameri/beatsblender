@@ -1,6 +1,21 @@
-<div ui-view="search"></div>
 <div class="row">
+	<div class="col-md-12 col-xs-12 detail-column">
+		<div ui-view="search"></div>
+	</div>
+	<div class="col-md-6 col-xs-12 detail-column">
 		<div ui-view="details"></div>
-		<div ui-view="library"></div>				
-    <div ui-view="results"></div>			
+	</div>
+	<div class="col-md-6 col-xs-12" id='library-column'>
+		<div class="row" id='tabs'>
+			<div class="col-md-6 col-xs-6 library-tab" ng-click='toggleLibrary()'> 
+				<h2>Library</h2>
+			</div>
+			
+			<div class="col-md-6 col-xs-6 results-tab" ng-click='toggleResults()' ng-show="resultsInit">
+				<h2>Results</h2>
+			</div>
+		</div>
+		<div ui-view="library" ng-show="showLibrary"></div>
+    <div ui-view="results" ng-show="!showLibrary"></div>							
+	</div>
 </div>

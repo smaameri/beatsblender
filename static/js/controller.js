@@ -6,6 +6,7 @@ app.controller('MainController', function($scope, $window, $document, YoutubeFac
 		$scope.detail  = YoutubeFactory.getDetail();
 		$scope.libraryStock = YoutubeFactory.getLibraryStock();
 		YoutubePlayer.youtubeAPIInit();
+		$scope.resultsInit = false;
 		//resizePlayer();
 	}	
 	
@@ -13,6 +14,9 @@ app.controller('MainController', function($scope, $window, $document, YoutubeFac
 				
 	$scope.search = function(query){
 		YoutubeFactory.getAllVideos(query, 10, 'results', true)
+		$scope.showLibrary = false;
+		$scope.resultsInit = true;
+		$scope.updateTab();
 	}
 	
 	$scope.add = function(resultsVideo){
@@ -35,13 +39,47 @@ app.controller('MainController', function($scope, $window, $document, YoutubeFac
 		console.log(video)
 	}
 	
-	console.log('$window.innerWidth');
-	console.log($window.innerWidth);
+	$scope.showLibrary = true;
 	
+	$scope.toggleLibrary = function(){
+			$scope.showLibrary = true;
+			$scope.updateTab();
+	}
+	
+	$scope.toggleResults = function(){
+			$scope.showLibrary = false;
+			$scope.updateTab();
+			
+	}
+		
 	angular.element($window).bind('resize', function(){
 		YoutubePlayer.resizePlayer();
+		youtubePlayer.tabButton()
 	})
-	
+
+	$scope.updateTab = function(){
+		var libraryTab = angular.element(document.querySelector('.library-tab'))		
+		var resultsTab = angular.element(document.querySelector('.results-tab'))		
+		
+		if($scope.showLibrary == true){
+			libraryTab.css('background', '#eeeeee');
+			libraryTab.css('color', '#555555');
+
+			resultsTab.css('background', '#555555');
+			resultsTab.css('color', '#bbbbbb');
+		}
+		else{
+			resultsTab.css('background', '#eeeeee');
+			resultsTab.css('color', '#555555');
+
+			libraryTab.css('background', '#555555');
+			libraryTab.css('color', '#bbbbbb');
+		}
+		
+		console.log(libraryTab)
+		console.log(resultsTab)
+
+	}
 
   youtubePlayer.createPlayer = function (videoId){
 		return new YT.Player('player', {

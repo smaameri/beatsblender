@@ -31,8 +31,14 @@ app.factory('YoutubePlayer', function($log, $window){
 		
 		player.css('width', playerWidth)
 		player.css('height', playerHeight);
+		
 	}
 	
+	
+	youtubePlayer.tabButton = function(){
+		var videoDetail = angular.element(document.querySelector('.video-tab'))
+		console.log(videoDetail[0].clientHeight)		
+	}
 	
 	$window.onYouTubeIframeAPIReady = function(){
     $log.info('Youtube API is ready');
@@ -169,14 +175,11 @@ app.factory('YoutubeFactory', function($http, $q, $cookieStore, $window, $log, Y
 		
 		fac.addData = function(video, list){
 			var data;
-			console.log(list)
 			var inLibrary = false;
 			if(list == 'results'){
 				angular.forEach(store.library, function(libraryVideo){
-					console.log(video.id)
 					if(video.id.videoId == libraryVideo.id)
 						inLibrary = true;
-					console.log(inLibrary);
 				})
 			}
 			

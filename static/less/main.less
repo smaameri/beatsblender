@@ -79,6 +79,10 @@ body{
 }
 
 
+#tabs{
+	text-align:center;
+}
+
 #results-column{
 	float:left;
 }
@@ -87,111 +91,134 @@ body{
 	border-right:5px solid @gray-lighter;
 }
 
+.detail-column{
+	padding-right:0px;
+}
 
 
+#tabs{
+	h2{
+		margin-bottom:20px;
+	}
+}
 
-#results{
-	padding-left:20px;
-	
-	.video{
-		position:relative;
-		padding:10px;
-		padding-left:140px;
-		
-		.video-image{
-			float:left;
-			left:10px;
-			position:absolute;
-			height:90px;
-			width:120px;
-		}
-		.video-title{
-			font-size:18px;
-			
-		}
-		.video-author{
-			color:@blue;
-			
-			
-		}
-		.video-description{
-			width:70%;
-		}
-		.video-views{
-			display:inline-block;
-			margin-right:20px;
-			span{font-weight:bold; color:@gray;}
-		}
+.library-tab{
+	color:@gray;
+	background:@gray-lighter;
+}
 
-		.video-likes{
-			display:inline-block;
-			margin-right:20px;
-			span{font-weight:bold; color:@gray;}
-			
-			
-		}
-		.video-uploaded{
-			display:inline-block;
-			span{font-weight:bold; color:@gray;}
-			
-		}
-		
-		.button-controllers{
-			float:right;
-			margin-right:20px;
-			
-			.playButton{				
-			font-weight:bold;
-	    font-size:16px;
-			cursor: pointer;
-			cursor: hand;
-			color:@gray;
-		}
-		.addButton, .resultRemoveButton{
-			color:@brand-success;
-			font-weight:bold;
-	    text-align: center;
-	    font-size:16px;
-			cursor: pointer;
-			cursor: hand;
-		}
-		.addButton{
-			padding-left:40px;
-		}
-		.resultRemoveButton{
-			padding-left:8px;
-		}
-		.addbutton:hover{
-		}
-		
-		.resultRemoveButton{
-			color:@brand-danger;			
-		}
-		.resultRemoveButton:hover{
-		}
-	}
-	}
-	.video:nth-child(even){
-		background:#f5f5f5;
-	}
-	.video:hover{
-		background:@gray-lighter;
-		
-		.addbutton{
-			color:darken(@brand-success,20%);
-		}
-		
-		.resultRemoveButton{
-			color:darken(@brand-danger,20%)
-		}
-		
-	}
-	
+.results-tab{
+	background:@gray;
+	color:darken(@gray-lighter, 20%);
 	
 }
 
+.video{
+	position:relative;
+	padding:10px;
+	padding-left:140px;
+	border-left:solid 1px @gray-lighter;
+	
+}
+	.video-image{
+		float:left;
+		left:10px;
+		position:absolute;
+		height:90px;
+		width:120px;
+	}
+	.video-title{
+		font-size:18px;
+		
+	}
+	.video-author{
+		color:@blue;
+		
+		
+	}
+	.video-description{
+		width:70%;
+	}
+	.video-views{
+		display:inline-block;
+		margin-right:20px;
+		span{font-weight:bold; color:@gray;}
+	}
+
+	.video-likes{
+		display:inline-block;
+		margin-right:20px;
+		span{font-weight:bold; color:@gray;}
+		
+		
+	}
+	.video-uploaded{
+		display:inline-block;
+		span{font-weight:bold; color:@gray;}
+		
+	}
+
+.video-tab:nth-child(odd){
+	background:@gray-lighter;
+}
+
+.video-tab:first-child{
+	padding-top:20px
+}
+
+
+
+.video:hover{
+	background:darken(@gray-lighter, 10%);
+	
+	.addbutton{
+		color:darken(@brand-success,20%);
+	}
+	
+	.resultRemoveButton{
+		color:darken(@brand-danger,20%)
+	}
+
+}
+
+.button-controllers:hover{
+	background:darken(@gray-lighter, 10%);
+}
+
+.button-controllers{
+		margin-top:40px;
+		text-align:center;
+		
+			
+	.addButton, .resultRemoveButton{
+		color:@brand-success;
+		font-weight:bold;
+    text-align: center;
+    font-size:16px;
+		cursor: pointer;
+		cursor: hand;
+	}
+	
+	.addButton{
+	}
+	.resultRemoveButton{
+		padding-left:8px;
+	}
+	.addbutton:hover{
+	}
+	
+	.resultRemoveButton{
+		color:@brand-danger;			
+	}
+	.resultRemoveButton:hover{
+	}
+
+
+}
+	
+
+
 #library-column{
-	padding-left:0px;
 	
 }
 
@@ -205,11 +232,7 @@ body{
 		margin-top:40px;
 		margin-left:20px;
 		
-	}
-
-	.library-videos:nth-child(odd){
-		}
-		
+	}		
 
 	.library-videos{
 		border-bottom:solid 1px @gray-lighter;

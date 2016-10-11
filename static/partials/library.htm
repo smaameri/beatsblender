@@ -1,10 +1,18 @@
-<div class="col-md-6" id='library-column'>
-  <div id='library'>
-		<h2>Library</h2>
-		<h4 data-ng-show="!libraryStock">Your library is empty. Add some videos!</h4>
-  	<div class='library-videos' data-ng-repeat="video in library">
-			<p class='removeButton' data-ng-click="remove(video)"  >&#10005</p>
-			<p class='libraryVideo' data-ng-click="play(video, 'library')">{{ video.title }}</p>
-		</div>
-  </div>
+	<h4 data-ng-show="!libraryStock">Your library is empty. Add some videos!</h4>
+
+<div id='library' id="results-column">
+	<div data-ng-repeat="video in library" class='video-tab row'>
+			<div class="col-md-10 col-xs-10 video" data-ng-click="play(video, 'library')">
+			  <img class="video-image" data-ng-src="{{ video.thumbnail }}">
+		    <p class="video-title">{{ video.title }}</p>
+		    <p class="video-author">{{ video.author }}</p>
+		    <p class="video-views">{{ video.viewCount }} views</p>
+			</div>
+			<div class="button-controllers col-md-2 col-xs-2">
+				<p>
+					<span class='addButton' data-ng-click="add(video)" data-ng-show="!video.inLibrary" >Add</span>
+					<span class='resultRemoveButton' data-ng-click="remove(video)" data-ng-show="video.inLibrary">Remove</span>
+				</p>
+			</div>
+	</div>
 </div>
