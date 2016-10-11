@@ -6724,8 +6724,18 @@ button.close {
     display: none !important;
   }
 }
-html {
-  overflow-y: scroll;
+@media (max-width: 480px) {
+  body {
+    font-size: 20px;
+  }
+}
+@media (max-width: 768px) {
+  body {
+    font-size: 12px;
+  }
+}
+h2 {
+  font-size: 2em;
 }
 #landing {
   position: absolute;
@@ -6792,9 +6802,6 @@ html {
 }
 .border-show {
   border-right: 5px solid #eeeeee;
-}
-.detail-column {
-  padding-right: 0px;
 }
 #tabs h2 {
   margin-bottom: 20px;
@@ -6867,9 +6874,6 @@ html {
 .video:hover .resultRemoveButton {
   color: #a02622;
 }
-.button-controllers:hover {
-  background: #d5d5d5;
-}
 .button-controllers {
   margin-top: 40px;
   text-align: center;
@@ -6879,15 +6883,25 @@ html {
   color: #5cb85c;
   font-weight: bold;
   text-align: center;
-  font-size: 16px;
+  font-size: 20px;
   cursor: pointer;
   cursor: hand;
 }
 .button-controllers .resultRemoveButton {
   padding-left: 8px;
 }
+.button-controllers .addbutton:hover {
+  color: #449d44;
+}
+.button-controllers .addbutton:hover,
+.button-controllers .resultRemoveButton:hover {
+  font-size: 24px;
+}
 .button-controllers .resultRemoveButton {
   color: #d9534f;
+}
+.button-controllers .resultRemoveButton:hover {
+  color: #c9302c;
 }
 #library h2 {
   margin-left: 20px;

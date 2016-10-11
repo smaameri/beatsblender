@@ -1,7 +1,20 @@
 @import "bootstrap/less/bootstrap.less";
 
+@media (max-width: @screen-xs) {
+    body{font-size: 20px;}
+}
+
+@media (max-width: @screen-sm) {
+    body{font-size: 12px;}
+}
+
+
+h2{
+    font-size: 2em;
+}       
+
+
 html {
-  overflow-y: scroll;
 }
 
 body{
@@ -92,7 +105,7 @@ body{
 }
 
 .detail-column{
-	padding-right:0px;
+	//padding-right:0px;
 }
 
 
@@ -182,7 +195,6 @@ body{
 }
 
 .button-controllers:hover{
-	background:darken(@gray-lighter, 10%);
 }
 
 .button-controllers{
@@ -194,7 +206,7 @@ body{
 		color:@brand-success;
 		font-weight:bold;
     text-align: center;
-    font-size:16px;
+    font-size:20px;
 		cursor: pointer;
 		cursor: hand;
 	}
@@ -205,12 +217,19 @@ body{
 		padding-left:8px;
 	}
 	.addbutton:hover{
+		color:darken(@brand-success, 10%);			
+	}
+	.addbutton:hover, .resultRemoveButton:hover{
+		font-size:24px;
+	
 	}
 	
 	.resultRemoveButton{
 		color:@brand-danger;			
 	}
 	.resultRemoveButton:hover{
+		color:darken(@brand-danger, 10%);			
+		
 	}
 
 

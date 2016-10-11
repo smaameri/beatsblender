@@ -239,6 +239,7 @@ app.factory('YoutubeFactory', function($http, $q, $cookieStore, $window, $log, Y
 				angular.forEach(store.cookieLibrary, function(videoId){
 					PromiseList.push(YoutubeAPI.youtubeSearch(videoId, 1).then(function(response){
 						video = fac.addData(response.data.items[0])
+						video.inLibrary = true;
 						YoutubeAPI.getStats(video)
 						return video
 						}));
