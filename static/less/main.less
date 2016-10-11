@@ -8,6 +8,9 @@
     body{font-size: 12px;}
 }
 
+html{
+  overflow-y: scroll;
+}
 
 h2{
     font-size: 2em;
@@ -17,15 +20,19 @@ h2{
 html {
 }
 
-body{
-}
 
 @blue:#47b0e2;
 
 #main{
 }
 
-
+.library-landing{
+	padding-top:60px;
+	padding-bottom:140px;
+	color:@gray;
+	text-align:center;
+	
+}
 
 #landing{
   position: absolute;
@@ -55,7 +62,7 @@ body{
 		text-align:center;
 		float:center;
 		border-style:none;
-		font-size:20px;
+		font-size:2em;
 		color:@gray;
 		
 		
@@ -183,6 +190,9 @@ body{
 
 .video:hover{
 	background:darken(@gray-lighter, 10%);
+	cursor: pointer;
+	cursor: hand;
+	
 	
 	.addbutton{
 		color:darken(@brand-success,20%);
@@ -214,13 +224,12 @@ body{
 	.addButton{
 	}
 	.resultRemoveButton{
-		padding-left:8px;
 	}
 	.addbutton:hover{
 		color:darken(@brand-success, 10%);			
 	}
 	.addbutton:hover, .resultRemoveButton:hover{
-		font-size:24px;
+		font-size:22px;
 	
 	}
 	

@@ -6734,8 +6734,17 @@ button.close {
     font-size: 12px;
   }
 }
+html {
+  overflow-y: scroll;
+}
 h2 {
   font-size: 2em;
+}
+.library-landing {
+  padding-top: 60px;
+  padding-bottom: 140px;
+  color: #555555;
+  text-align: center;
 }
 #landing {
   position: absolute;
@@ -6765,7 +6774,7 @@ h2 {
   text-align: center;
   float: center;
   border-style: none;
-  font-size: 20px;
+  font-size: 2em;
   color: #555555;
 }
 #search #submit {
@@ -6867,6 +6876,8 @@ h2 {
 }
 .video:hover {
   background: #d5d5d5;
+  cursor: pointer;
+  cursor: hand;
 }
 .video:hover .addbutton {
   color: #357935;
@@ -6887,15 +6898,12 @@ h2 {
   cursor: pointer;
   cursor: hand;
 }
-.button-controllers .resultRemoveButton {
-  padding-left: 8px;
-}
 .button-controllers .addbutton:hover {
   color: #449d44;
 }
 .button-controllers .addbutton:hover,
 .button-controllers .resultRemoveButton:hover {
-  font-size: 24px;
+  font-size: 22px;
 }
 .button-controllers .resultRemoveButton {
   color: #d9534f;
