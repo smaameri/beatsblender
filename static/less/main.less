@@ -197,17 +197,17 @@ html {
 	padding-top:20px
 }
 
+.video-tab:hover{
+	background:darken(@gray-lighter, 10%);
+}
 
 
 .video:hover{
-	background:darken(@gray-lighter, 10%);
 	
 	.addbutton{
-		color:darken(@brand-success,20%);
 	}
 	
 	.resultRemoveButton{
-		color:darken(@brand-danger,20%)
 	}
 
 }
@@ -241,6 +241,7 @@ html {
 		background:lighten(@brand-danger, 10%);
 		color:@gray;
 		margin-top:0px;
+		
 	}
 	.resultRemoveButton:hover{
 		
@@ -439,11 +440,16 @@ html {
 		
 		.button-controllers{
 			margin-top:0px;
-			border-top:solid 1px darken(@gray-lighter, 20%);
 			border-bottom:solid 1px darken(@gray-lighter, 20%);
 			
 			p{
 				padding-top:10px;
+			}
+			
+			.resultRemoveButton, .addButton{
+				padding-top:5px;
+				padding-bottom:5px;
+				
 			}
 			
 		}

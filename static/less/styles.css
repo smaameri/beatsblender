@@ -6876,14 +6876,8 @@ h2 {
 .video-tab:first-child {
   padding-top: 20px;
 }
-.video:hover {
+.video-tab:hover {
   background: #d5d5d5;
-}
-.video:hover .addbutton {
-  color: #357935;
-}
-.video:hover .resultRemoveButton {
-  color: #a02622;
 }
 .button-controllers {
   margin-top: 20px;
@@ -7030,11 +7024,15 @@ h2 {
   }
   .button-controllers {
     margin-top: 0px;
-    border-top: solid 1px #bbbbbb;
     border-bottom: solid 1px #bbbbbb;
   }
   .button-controllers p {
     padding-top: 10px;
+  }
+  .button-controllers .resultRemoveButton,
+  .button-controllers .addButton {
+    padding-top: 5px;
+    padding-bottom: 5px;
   }
   .video-tab {
     padding-top: 20px;
