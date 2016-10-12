@@ -73,7 +73,7 @@ html {
 		text-align:center;
 		float:center;
 		border-style:none;
-		font-size:2em;
+		font-size:1.8em;
 		color:@gray;
 		
 		
@@ -411,7 +411,7 @@ html {
 
 
 	@media (min-width: @screen-sm) {
-	    body{font-size: 20px;}
+	    body{font-size:12px;}
 	}
 
 	@media (min-width: @screen-md) {
@@ -436,6 +436,26 @@ html {
 		#search{
 			background:green;
 		}
+		
+		#tv{
+			padding-bottom:10px;
+		}
+		
+		
+		.button-controllers{
+			margin-top:0px;
+			border-top:solid 1px darken(@gray-lighter, 20%);
+			border-bottom:solid 1px darken(@gray-lighter, 20%);
+			
+			p{
+				padding-top:10px;
+			}
+			
+		}
+		
+		.video-tab{
+			padding-top:20px;
+		}
 
 	}
 
@@ -444,6 +464,24 @@ html {
 		#search{
 			background:green;
 		}
+		
+		#tv{
+			padding-bottom:10px;
+		}
+		
+		.button-controllers{
+			margin-top:0px;
+			border-top:solid 1px darken(@gray-lighter, 20%);
+			border-bottom:solid 1px darken(@gray-lighter, 20%);
+			
+			p{
+				padding-top:10px;
+			}
+			
+		}
+		.video-tab{
+			padding-top:20px;
+		}
 
 	}
 
@@ -451,6 +489,10 @@ html {
 	@media (max-width: 480px) {
 		#search{
 			background:green;
+			
+		}
+		
+		.button-controllers{
 		}
 
 	}

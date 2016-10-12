@@ -4,13 +4,13 @@
 <div id='library' id="library-column">
 	
 	<div data-ng-repeat="video in library" class='video-tab row'>
-			<div class="col-md-9 col-xs-9 video" data-ng-click="play(video, 'library')">
+			<div class="col-md-9 col-xs-12 video" data-ng-click="play(video, 'library')">
 			  <img class="video-image" data-ng-src="{{ video.thumbnail }}">
 		    <p class="video-title">{{ video.title }}</p>
 		    <p class="video-author">{{ video.author }}</p>
 		    <p class="video-views">{{ video.viewCount }} views</p>
 			</div>
-			<div class="button-controllers col-md-3 col-xs-3">
+			<div class="button-controllers col-md-3 col-xs-12">
 				<p>
 					<span class='addButton' data-ng-click="add(video)" data-ng-show="!video.inLibrary" >Add</span>
 					<span class='resultRemoveButton' data-ng-click="remove(video)" data-ng-show="video.inLibrary">Remove</span>
