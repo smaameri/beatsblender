@@ -6725,21 +6725,6 @@ button.close {
   }
 }
 /* Large desktops and laptops */
-@media (min-width: 768px) {
-  body {
-    font-size: 20px;
-  }
-}
-@media (min-width: 992px) {
-  body {
-    font-size: 12px;
-  }
-}
-@media (max-width: 768px) {
-  #search {
-    background: green;
-  }
-}
 .container-fluid {
   padding-left: 0px;
   padding-right: 0px;
@@ -7040,6 +7025,16 @@ h2 {
 }
 #caption {
   margin-left: 15px;
+}
+@media (min-width: 768px) {
+  body {
+    font-size: 20px;
+  }
+}
+@media (min-width: 992px) {
+  body {
+    font-size: 12px;
+  }
 }
 /* Landscape tablets and medium desktops */
 @media (min-width: 992px) and (max-width: 1199px) {
