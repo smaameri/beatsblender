@@ -1,10 +1,14 @@
 @import "bootstrap/less/bootstrap.less";
 
-@media (min-width: @screen-xs) {
+/* Large desktops and laptops */
+
+
+
+@media (min-width: @screen-sm) {
     body{font-size: 20px;}
 }
 
-@media (min-width: @screen-sm) {
+@media (min-width: @screen-md) {
     body{font-size: 12px;}
 }
 
@@ -417,3 +421,41 @@ html {
 	#caption{
 		margin-left:15px;
 	}
+	
+	
+	@media (min-width: 1200px) {
+
+	}
+
+	/* Landscape tablets and medium desktops */
+	@media (min-width: 992px) and (max-width: 1199px) {
+		#search{
+			background:green;
+		}
+
+	}
+
+	/* Portrait tablets and small desktops */
+	@media (min-width: 768px) and (max-width: 991px) {
+		#search{
+			background:green;
+		}
+
+	}
+
+	/* Landscape phones and portrait tablets */
+	@media (max-width: 767px) {
+		#search{
+			background:green;
+		}
+
+	}
+
+	/* Portrait phones and smaller */
+	@media (max-width: 480px) {
+		#search{
+			background:green;
+		}
+
+	}
+	
