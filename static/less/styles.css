@@ -6724,14 +6724,19 @@ button.close {
     display: none !important;
   }
 }
-@media (max-width: 480px) {
+@media (min-width: 480px) {
   body {
     font-size: 20px;
   }
 }
-@media (max-width: 768px) {
+@media (min-width: 768px) {
   body {
     font-size: 12px;
+  }
+}
+@media (max-width: 768px) {
+  #search {
+    background: green;
   }
 }
 .container-fluid {
