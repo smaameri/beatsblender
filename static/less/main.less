@@ -8,6 +8,21 @@
     body{font-size: 12px;}
 }
 
+.container-fluid{
+	padding-left:0px;
+	padding-right:0px;
+}
+
+.no-gutter > [class*='col-'] {
+    padding-right:0;
+    padding-left:0;
+}
+
+.row{
+	margin-left:0px;
+	margin-right:0px;
+}
+
 html{
   overflow-y: scroll;
 }
@@ -190,9 +205,6 @@ html {
 
 .video:hover{
 	background:darken(@gray-lighter, 10%);
-	cursor: pointer;
-	cursor: hand;
-	
 	
 	.addbutton{
 		color:darken(@brand-success,20%);

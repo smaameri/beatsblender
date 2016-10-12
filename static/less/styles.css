@@ -6734,6 +6734,18 @@ button.close {
     font-size: 12px;
   }
 }
+.container-fluid {
+  padding-left: 0px;
+  padding-right: 0px;
+}
+.no-gutter > [class*='col-'] {
+  padding-right: 0;
+  padding-left: 0;
+}
+.row {
+  margin-left: 0px;
+  margin-right: 0px;
+}
 html {
   overflow-y: scroll;
 }
@@ -6876,8 +6888,6 @@ h2 {
 }
 .video:hover {
   background: #d5d5d5;
-  cursor: pointer;
-  cursor: hand;
 }
 .video:hover .addbutton {
   color: #357935;

@@ -2,6 +2,7 @@
 		<h3 class=library-landing>Your library is empty. Add some videos!</h3>		
 	</div>
 <div id='library' id="library-column">
+	
 	<div data-ng-repeat="video in library" class='video-tab row'>
 			<div class="col-md-9 col-xs-9 video" data-ng-click="play(video, 'library')">
 			  <img class="video-image" data-ng-src="{{ video.thumbnail }}">
