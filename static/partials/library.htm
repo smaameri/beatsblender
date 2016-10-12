@@ -11,9 +11,8 @@
 		    <p class="video-views">{{ video.viewCount }} views</p>
 			</div>
 			<div class="button-controllers col-md-3 col-xs-12">
-				<p>
-					<span class='addButton' data-ng-click="add(video)" data-ng-show="!video.inLibrary" >Add</span>
-					<span class='resultRemoveButton' data-ng-click="remove(video)" data-ng-show="video.inLibrary">Remove</span>
+				<p>					
+					<button type="button" class="btn btn-danger btn-lg btn-block resultRemoveButton " data-ng-click="remove(video)" data-ng-show="video.inLibrary">Remove</button>
 				</p>
 			</div>
 	</div>
