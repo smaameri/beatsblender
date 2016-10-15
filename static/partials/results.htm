@@ -1,5 +1,7 @@
 <div id="results" id="results-column">
-	<div data-ng-repeat="video in results" class='video-tab row'>
+	
+	<div data-ng-repeat="video in results" class='video-tab row no-gutter'>
+		
 			<div class="col-md-12 col-xs-12" data-ng-click="play(video, 'results')">
 				<div class="video">
 					<img class="video-image" data-ng-src="{{ video.thumbnail }}">
@@ -8,12 +10,14 @@
 			    <p class="video-views">{{ video.viewCount }} views</p>
 				</div>
 			</div>
+			
 			<div class="col-md-12 col-xs-12" data-ng-click="play(video, 'library')">
 					  <span class="glyphicon glyphicon-plus-sign
 					" aria-hidden="true" data-ng-click="add(video)" data-ng-show="!video.inLibrary"></span>
 					<span class="glyphicon glyphicon-remove-sign
 				" aria-hidden="true" data-ng-click="remove(video)" data-ng-show="video.inLibrary"></span>
 			</div>
+			
 		</div>
 	</div>
 </div>
