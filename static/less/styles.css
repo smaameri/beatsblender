@@ -6850,11 +6850,11 @@ h2 {
 .glyphicon {
   float: right;
   font-size: 36px;
+  top: -50px;
   height: 0;
   margin-right: 20px;
   cursor: pointer;
   cursor: hand;
-  margin-top: 70px;
 }
 .glyphicon-plus-sign {
   color: #5cb85c;
@@ -7113,6 +7113,7 @@ input:-webkit-autofill {
   }
   .glyphicon {
     font-size: 26px;
+    top: -30px;
   }
   .form-group #query {
     font-size: 1.2em;

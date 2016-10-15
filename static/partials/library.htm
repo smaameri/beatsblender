@@ -5,7 +5,7 @@
 	
 	<div data-ng-repeat="video in library" class='video-tab row no-gutter' >
 			
-			<div class="col-md-10 col-xs-10 " data-ng-click="play(video, 'library')">
+			<div class="col-md-12 col-xs-12 " data-ng-click="play(video, 'library')">
 				<div class="video">
 				  <img class="video-image" data-ng-src="{{ video.thumbnail }}">
 			    <p class="video-title">{{ video.title }}</p>
@@ -14,7 +14,7 @@
 				</div>
 			</div>
 			
-			<div class="col-md-2 col-xs-2" data-ng-click="play(video, 'library')">
+			<div class="col-md-12 col-xs-12">
 			  <span class="glyphicon glyphicon glyphicon-remove-sign
 			" aria-hidden="true" data-ng-click="remove(video)" data-ng-show="video.inLibrary"></span>
 			</div>
