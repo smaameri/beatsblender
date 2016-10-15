@@ -16,7 +16,6 @@ app.controller('MainController', function($scope, $window, $document, YoutubeFac
 	    $('.item').matchHeight(options);
 	});
 	
-	
 	$scope.search = function(query){
 		YoutubeFactory.getAllVideos(query, 10, 'results', true)
 		$scope.showLibrary = false;
@@ -65,30 +64,19 @@ app.controller('MainController', function($scope, $window, $document, YoutubeFac
 		youtubePlayer.tabButton()
 	})
 
-
-
 	$scope.updateTab = function(){
-		var libraryTab = angular.element(document.querySelector('.library-tab'))		
-		var resultsTab = angular.element(document.querySelector('.results-tab'))		
-		
-		if($scope.showLibrary == true){
-			libraryTab.css('background', '#eeeeee');
-			libraryTab.css('color', '#555555');
-
-			resultsTab.css('background', '#555555');
-			resultsTab.css('color', '#bbbbbb');
+		if($scope.resultsInit){
+			var libraryTab = angular.element(document.querySelector('.library-tab'))		
+			var resultsTab = angular.element(document.querySelector('.results-tab'))		
+			if($scope.showLibrary == true){
+				libraryTab.css('border-bottom', '5px solid #47b0e2');
+				resultsTab.css('border-bottom', '5px solid white');
+			}
+			else{
+				libraryTab.css('border-bottom', '5px solid white');
+				resultsTab.css('border-bottom', '5px solid #47b0e2');
+			}
 		}
-		else{
-			resultsTab.css('background', '#eeeeee');
-			resultsTab.css('color', '#555555');
-
-			libraryTab.css('background', '#555555');
-			libraryTab.css('color', '#bbbbbb');
-		}
-		
-		console.log(libraryTab)
-		console.log(resultsTab)
-
 	}
 
   youtubePlayer.createPlayer = function (videoId){

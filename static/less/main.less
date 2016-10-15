@@ -3,7 +3,7 @@
 /* Large desktops and laptops */
 
 
-
+/*
 .container-fluid{
 	padding-left:0px;
 	padding-right:0px;
@@ -19,8 +19,16 @@
 	margin-right:0px;
 }
 
+*/
+
 html{
   overflow-y: scroll;
+	background-color:@gray-lighter;
+}
+
+.main{
+	background-color:@gray-lighter;
+	;
 }
 
 h2{
@@ -110,10 +118,6 @@ html {
 }
 
 
-#tabs{
-	text-align:center;
-}
-
 #results-column{
 	float:left;
 }
@@ -124,39 +128,86 @@ html {
 
 .detail-column{
 	//padding-right:0px;
+	
 }
 
+#details{
+	border:4px solid @gray-lighter;
+	padding: 20px;
+	padding: 20px;
+	background-color:white;
+	border:2px solid darken(@gray-lighter, 4%);
+	border-radius:6px;
+	margin-top:20px;
+	
+}
+
+#library-results-column{
+	background-color:white;
+	padding:20px;
+	border:2px solid darken(@gray-lighter, 4%);
+	margin-top:20px;
+	margin-bottom:20px;
+
+}
 
 #tabs{
-	h2{
-		margin-bottom:20px;
-	}
+	text-align:center;
+	border-bottom:1px solid @gray-lighter;
+	
 }
 
 .library-tab{
 	color:@gray;
-	background:@gray-lighter;
+	border-bottom:1px solid @gray-lighter;
+	padding-bottom:20px;
 }
 
 .results-tab{
-	background:@gray;
-	color:darken(@gray-lighter, 20%);
+	padding-bottom:20px;
+
+}
+
+
+.glyphicon{
+	float:right;
+	font-size:36px;
+	top:-50px;
+	height:0;
+	margin-right:20px;
+	cursor: pointer;
+	cursor: hand;
 	
 }
 
+.glyphicon-plus-sign{
+	color:@brand-success;
+}
+
+.glyphicon-remove-sign{
+	color:@brand-danger;
+}
+
+input:-webkit-autofill{
+	background-color:white;
+}
+
+.video-tab:active{
+	background-color:@gray-lighter;	
+}
+
 .video{
-	position:relative;
-	padding:10px;
-	padding-left:140px;
-	border-left:solid 1px @gray-lighter;
+	padding:20px;
+	cursor: pointer;
+	cursor: hand;
+	
 	
 }
 	.video-image{
 		float:left;
-		left:10px;
-		position:absolute;
 		height:90px;
 		width:120px;
+		padding-right:20px;
 	}
 	.video-title{
 		font-size:18px;
@@ -189,16 +240,22 @@ html {
 		
 	}
 
+.video-tab{
+	border-bottom:solid 1px @gray-lighter;
+	
+}
+
 .video-tab:nth-child(odd){
-	background:@gray-lighter;
 }
 
 .video-tab:first-child{
-	padding-top:20px
 }
 
+.video-tab:last-child{
+}
+
+
 .video-tab:hover{
-	background:darken(@gray-lighter, 10%);
 }
 
 
@@ -225,26 +282,42 @@ html {
 	}
 	
 	.addButton{
-		background:lighten(@brand-success, 10%);
-		color:@gray;
+		color:@brand-success;
+		background-color:white;
 		
 	}
 	.resultRemoveButton{
 	}
-	.addbutton:hover{
+	.addbutton:active, .addbutton:focus{
+		background:white;
+		color:darken(@brand-success, 20%);
+		outline: 5px auto @brand-success;		
+		
 	}
 	.addbutton:hover, .resultRemoveButton:hover{
 	
 	}
 	
 	.resultRemoveButton{
-		background:lighten(@brand-danger, 10%);
-		color:@gray;
+		background:white;
+		color:@brand-danger;
 		margin-top:0px;
 		
 	}
-	.resultRemoveButton:hover{
-		
+	
+	.resultRemoveButton:active,
+	.resultRemoveButton:focus,
+	.resultRemoveButton.active {
+	  background-image: none;
+	  outline: 0;
+	  -webkit-box-shadow: none;
+	          box-shadow: none;
+	}
+	
+	.resultRemoveButton:active, .resultRemoveButton:focus{
+		background:white;
+		color:darken(@brand-danger, 20%);		
+		outline: 5px auto @brand-danger;		
 	}
 
 
@@ -418,6 +491,65 @@ html {
 	/* Portrait tablets and small desktops */
 	@media (max-width: 991px) {
 		
+		.container-fluid{
+			padding-left:0px;
+			padding-right:0px;
+		}
+
+		.no-gutter > [class*='col-'] {
+		    padding-right:0;
+		    padding-left:0;
+		}
+
+		.row{
+			margin-left:0px;
+			margin-right:0px;
+		}
+		
+		#details{
+			border:none;
+			padding: 0px;
+			padding: 0px;
+			margin-top:0px;
+	
+		}
+
+		#library-results-column{
+			background-color:white;
+			padding:0px;
+			border:none;
+			margin-top:0px;
+			margin-bottom:0px;
+
+		}
+		
+		.video-tab{
+			padding-bottom:10px;
+		}
+		.video-image{
+			position:absolute;
+			padding-right:10px;
+		}
+		.video-title{
+			padding-left:120px;
+		
+		}
+		.video-author{
+			padding-left:120px;
+		}
+		.video-views{
+			padding-left:120px;
+		}
+		
+		.video{
+			padding:0px;
+		}
+		
+		.glyphicon{
+			font-size:26px;
+			top:-30px;
+			
+		}
 		
 		.form-group #query{
 			font-size:1.2em;

@@ -33,8 +33,7 @@ app.factory('YoutubePlayer', function($log, $window){
 		player.css('height', playerHeight);
 		
 	}
-	
-		
+
 	$window.onYouTubeIframeAPIReady = function(){
     $log.info('Youtube API is ready');
     youtube.ready = true;

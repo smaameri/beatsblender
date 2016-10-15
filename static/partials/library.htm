@@ -3,17 +3,20 @@
 	</div>
 <div id='library' id="library-column">
 	
-	<div data-ng-repeat="video in library" class='video-tab row'>
-			<div class="col-md-9 col-xs-12 video" data-ng-click="play(video, 'library')">
-			  <img class="video-image" data-ng-src="{{ video.thumbnail }}">
-		    <p class="video-title">{{ video.title }}</p>
-		    <p class="video-author">{{ video.author }}</p>
-		    <p class="video-views">{{ video.viewCount }} views</p>
+	<div data-ng-repeat="video in library" class='video-tab row no-gutter' >
+			<div class="col-md-12 col-xs-12 " data-ng-click="play(video, 'library')">
+				<div class="video">
+				  <img class="video-image" data-ng-src="{{ video.thumbnail }}">
+			    <p class="video-title">{{ video.title }}</p>
+			    <p class="video-author">{{ video.author }}</p>
+			    <p class="video-views">{{ video.viewCount }} views</p>
+				</div>
 			</div>
-			<div class="button-controllers col-md-3 col-xs-12">
-				<p>					
-					<button type="button" class="btn btn-danger btn-lg btn-block resultRemoveButton " data-ng-click="remove(video)" data-ng-show="video.inLibrary">Remove</button>
-				</p>
+			<div class="col-md-12 col-xs-12 no-gutter" data-ng-click="play(video, 'library')">
+			  <span class="glyphicon glyphicon glyphicon-remove-sign
+			" aria-hidden="true" data-ng-click="remove(video)" data-ng-show="video.inLibrary"></span>
+			</div>
+			
 			</div>
 	</div>
 </div>

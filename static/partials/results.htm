@@ -1,18 +1,19 @@
 <div id="results" id="results-column">
 	<div data-ng-repeat="video in results" class='video-tab row'>
-			<div class="col-md-9 col-xs-12 video" data-ng-click="play(video, 'results')">
-			  <img class="video-image" data-ng-src="{{ video.thumbnail }}">
-		    <p class="video-title">{{ video.title }}bsdfd</p>
-		    <p class="video-author">{{ video.author }}</p>
-		    <p class="video-views">{{ video.viewCount }} views</p>
+			<div class="col-md-12 col-xs-12" data-ng-click="play(video, 'results')">
+				<div class="video">
+					<img class="video-image" data-ng-src="{{ video.thumbnail }}">
+			    <p class="video-title">{{ video.title }}bsdfd</p>
+			    <p class="video-author">{{ video.author }}</p>
+			    <p class="video-views">{{ video.viewCount }} views</p>
+				</div>
 			</div>
-			<div class="button-controllers col-md-3 col-xs-12">
-				<p>
-					<button type="button"  class="btn btn-success btn-lg btn-block addButton" data-ng-click="add(video)" data-ng-show="!video.inLibrary">Add</button>
-					<button type="button" class="btn btn-danger btn-lg btn-block resultRemoveButton" data-ng-click="remove(video)" data-ng-show="video.inLibrary">Remove</button>
-					
-					
-				</p>
+			<div class="col-md-12 col-xs-12" data-ng-click="play(video, 'library')">
+					  <span class="glyphicon glyphicon-plus-sign
+					" aria-hidden="true" data-ng-click="add(video)" data-ng-show="!video.inLibrary"></span>
+					<span class="glyphicon glyphicon-remove-sign
+				" aria-hidden="true" data-ng-click="remove(video)" data-ng-show="video.inLibrary"></span>
 			</div>
+		</div>
 	</div>
 </div>
