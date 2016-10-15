@@ -6774,19 +6774,22 @@ h2 {
   color: white;
 }
 #search {
-  padding: 40px;
+  padding-top: 30px;
+  padding-bottom: 10px;
   background: #47b0e2;
+  border-radius: 4px;
+  font-size: 1.4em;
 }
 #search #query {
   width: 80%;
   margin-left: 10%;
   border-radius: 20px;
   border-color: gray;
-  height: 42px;
   text-align: center;
   float: center;
   border-style: none;
   color: #555555;
+  padding: 10px;
 }
 #search #submit {
   height: 40px;
@@ -6845,6 +6848,7 @@ h2 {
   padding-bottom: 20px;
 }
 .results-tab {
+  border-left: 1px solid #eeeeee;
   padding-bottom: 20px;
 }
 .glyphicon {
@@ -6857,10 +6861,10 @@ h2 {
   cursor: hand;
 }
 .glyphicon-plus-sign {
-  color: #5cb85c;
+  color: #80c780;
 }
 .glyphicon-remove-sign {
-  color: #d9534f;
+  color: #ff6961;
 }
 input:-webkit-autofill {
   background-color: white;
@@ -7060,11 +7064,6 @@ input:-webkit-autofill {
 #caption {
   margin-left: 15px;
 }
-@media (min-width: 1200px) {
-  .form-group #query {
-    font-size: 1.8em;
-  }
-}
 /* Portrait tablets and small desktops */
 @media (max-width: 991px) {
   .container-fluid {
@@ -7091,6 +7090,10 @@ input:-webkit-autofill {
     margin-top: 0px;
     margin-bottom: 0px;
   }
+  .library-tab,
+  .results-tab {
+    padding-top: 10px;
+  }
   .video-tab {
     padding-bottom: 10px;
   }
@@ -7112,8 +7115,8 @@ input:-webkit-autofill {
     padding: 0px;
   }
   .glyphicon {
-    font-size: 26px;
-    top: -30px;
+    font-size: 36px;
+    top: -50px;
   }
   .form-group #query {
     font-size: 1.2em;
@@ -7121,6 +7124,7 @@ input:-webkit-autofill {
   #search {
     padding-left: 0px;
     padding-right: 0px;
+    font-size: 1.2em;
   }
   #tv {
     padding-bottom: 10px;
