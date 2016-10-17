@@ -10,6 +10,10 @@ app.controller('MainController', function($scope, $window, $document, $location,
 		//resizePlayer();
 	}	
 	
+	$scope.onSwipeLeft = function(){
+		console.log('boo')
+	}
+	
 	init()
 	
 	var searchBar = angular.element(document.querySelector('#query'))
@@ -55,20 +59,17 @@ app.controller('MainController', function($scope, $window, $document, $location,
 	$scope.play = function(video, list){
 		YoutubePlayer.loadVideo(video, list);
 		$scope.detail = video;
-		console.log(video)
 	}
 	
 	$scope.showLibrary = true;
 	
-	$scope.toggleLibrary = function(){
+	$scope.toggleLibrary = function(tab){
+		if(tab == 'library')
 			$scope.showLibrary = true;
-			$scope.updateTab();
-	}
-	
-	$scope.toggleResults = function(){
+		else{
 			$scope.showLibrary = false;
-			$scope.updateTab();
-			
+		}
+		$scope.updateTab();
 	}
 		
 	angular.element($window).bind('resize', function(){

@@ -1,7 +1,7 @@
 	<div class='video-tab row' data-ng-show="!libraryStock">
 		<h3 class=library-landing>Your library is empty. Add some videos!</h3>		
 	</div>
-<div id='library' id="library-column">
+<div id='library' id="library-column" ng-swipe-left="toggleLibrary('results')">
 	
 	<div data-ng-repeat="video in library" class='video-tab row no-gutter' >
 			

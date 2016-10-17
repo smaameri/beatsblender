@@ -79,7 +79,6 @@ app.factory('YoutubePlayer', function($log, $window){
 		this.play(video.id);
 		nowPlaying.id = video.id;
 		nowPlaying.playlist = list;
-		console.log(nowPlaying);
 	}
 	
 	return youtubePlayer
@@ -221,9 +220,7 @@ app.factory('YoutubeFactory', function($http, $q, $cookieStore, $window, $log, Y
 				$cookieStore.remove('library');
 			}
 			console.log('removed');
-					
 		}
-
 		
     fac.getCookieLibrary = function(){
 			if(typeof $cookieStore.get('library') != "undefined"){
