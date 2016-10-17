@@ -53,40 +53,19 @@ html {
 	
 }
 
-#landing{
-  position: absolute;
-  top: 134px; /* Header Height */
-  bottom: 20px; /* Footer Height */
-  width: 100%;
-	background:darken(@blue, 20%);
-	text-align:center;
-	h1{
-		margin-top:20%;
-		font-size:56px;
-		color:white;
-	}
-}
-
 #search{
 	padding-top:30px;
 	padding-bottom:10px;
-	
 	background:@blue;
 	border-radius:4px;
 	font-size:1.4em;
-	
-
-	#query{
+	form{
 		width:80%;
 		margin-left:10%;
-		border-radius:20px;
-		border-color:gray;
-		text-align:center;
-		float:center;
-		border-style:none;
-		color:@gray;
-		padding:10px;
 		
+	}
+
+	#query{
 		
 	}
 	#submit{
@@ -131,7 +110,7 @@ html {
 }
 
 .detail-column{
-	//padding-right:0px;
+	padding-right:10px;
 	
 }
 
@@ -147,12 +126,17 @@ html {
 }
 
 #library-results-column{
+	padding-left:10px;
+	
+}
+
+#library-results-wrapper{
 	background-color:white;
 	padding:20px;
 	border:2px solid darken(@gray-lighter, 4%);
 	margin-top:20px;
 	margin-bottom:20px;
-
+	
 }
 
 #tabs{
@@ -161,14 +145,13 @@ html {
 	
 }
 
-.library-tab{
+#library-tab{
 	color:@gray;
 	border-bottom:1px solid @gray-lighter;
 	padding-bottom:20px;
 }
 
-.results-tab{
-	border-left:1px solid @gray-lighter;
+#results-tab{
 	padding-bottom:20px;
 
 }
@@ -202,32 +185,39 @@ input:-webkit-autofill{
 }
 
 .video{
-	padding:20px;
+	padding:10 20;
 	cursor: pointer;
 	cursor: hand;
 	
 	
 }
 	.video-image{
+		position:absolute;
 		float:left;
 		height:90px;
-		width:120px;
+		width:160px;
 		padding-right:20px;
 	}
+	
 	.video-title{
 		font-size:18px;
+		padding-left:160px;
 		
 	}
 	.video-author{
 		color:@blue;
-		
-		
+		padding-left:160px;
 	}
+	
 	.video-description{
 		width:70%;
+		padding-left:160px;
+		
 	}
+	
 	.video-views{
 		display:inline-block;
+		padding-left:160px;
 		margin-right:20px;
 		span{font-weight:bold; color:@gray;}
 	}
@@ -428,6 +418,8 @@ input:-webkit-autofill{
 			color:@blue;
 		}
 		.detail-author{
+			float:left;
+			margin-right:16px;
 			
 		}
 		.detail-description{
@@ -442,7 +434,6 @@ input:-webkit-autofill{
 		.detail-likes{
 			margin-right:20px;
 			span{color:@blue};
-			float:left;
 		}
 		.detail-uploaded{
 			span{color:@blue}
@@ -509,7 +500,12 @@ input:-webkit-autofill{
 			margin-top:0px;
 	
 		}
-
+		#library-results-wrapper{
+			padding:0px;
+			margin-top:0px;
+			
+		}
+		
 		#library-results-column{
 			background-color:white;
 			padding:0px;
@@ -519,8 +515,14 @@ input:-webkit-autofill{
 
 		}
 		
-		.library-tab, .results-tab{
+		#library-tab, #results-tab{
 			padding-top:10px;
+			padding-bottom:10px;
+			h1{
+				margin-top:10px;
+				font-size:30px;
+				font-weight:normal;
+			}
 		}
 		
 		.video-tab{
@@ -530,16 +532,17 @@ input:-webkit-autofill{
 			position:absolute;
 			padding-right:10px;
 			padding-left:10px;
+			width:140px;
 		}
 		.video-title{
-			padding-left:120px;
+			padding-left:140px;
 		
 		}
 		.video-author{
-			padding-left:120px;
+			padding-left:140px;
 		}
 		.video-views{
-			padding-left:120px;
+			padding-left:140px;
 		}
 		
 		.video{

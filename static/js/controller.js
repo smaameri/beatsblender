@@ -1,4 +1,4 @@
-app.controller('MainController', function($scope, $window, $document, YoutubeFactory, YoutubePlayer){
+app.controller('MainController', function($scope, $window, $document, $location, $anchorScroll, YoutubeFactory, YoutubePlayer){
 		
 	function init(){
 		$scope.library = YoutubeFactory.getLibrary();
@@ -11,11 +11,7 @@ app.controller('MainController', function($scope, $window, $document, YoutubeFac
 	}	
 	
 	init()
-	
-	$(function() {
-	    $('.item').matchHeight(options);
-	});
-	
+		
 	$scope.search = function(query){
 		YoutubeFactory.getAllVideos(query, 10, 'results', true)
 		$scope.showLibrary = false;
@@ -23,7 +19,9 @@ app.controller('MainController', function($scope, $window, $document, YoutubeFac
 		$scope.updateTab();
 		
 		var searchBar = angular.element(document.querySelector('#query'))
-		searchBar.blur();
+    $location.hash('results-tab');
+    $anchorScroll();
+		
 	}
 	
 	$scope.add = function(resultsVideo){
@@ -63,11 +61,15 @@ app.controller('MainController', function($scope, $window, $document, YoutubeFac
 		YoutubePlayer.resizePlayer();
 		youtubePlayer.tabButton()
 	})
-
+	
+	$scope.go = function(){
+		console.log('bee');
+	}
+	
 	$scope.updateTab = function(){
 		if($scope.resultsInit){
-			var libraryTab = angular.element(document.querySelector('.library-tab'))		
-			var resultsTab = angular.element(document.querySelector('.results-tab'))		
+			var libraryTab = angular.element(document.querySelector('#library-tab'))		
+			var resultsTab = angular.element(document.querySelector('#results-tab'))		
 			if($scope.showLibrary == true){
 				libraryTab.css('border-bottom', '5px solid #47b0e2');
 				resultsTab.css('border-bottom', '5px solid white');

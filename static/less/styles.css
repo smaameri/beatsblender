@@ -6758,21 +6758,6 @@ h2 {
   color: #555555;
   text-align: center;
 }
-#landing {
-  position: absolute;
-  top: 134px;
-  /* Header Height */
-  bottom: 20px;
-  /* Footer Height */
-  width: 100%;
-  background: #1b7ba8;
-  text-align: center;
-}
-#landing h1 {
-  margin-top: 20%;
-  font-size: 56px;
-  color: white;
-}
 #search {
   padding-top: 30px;
   padding-bottom: 10px;
@@ -6780,16 +6765,9 @@ h2 {
   border-radius: 4px;
   font-size: 1.4em;
 }
-#search #query {
+#search form {
   width: 80%;
   margin-left: 10%;
-  border-radius: 20px;
-  border-color: gray;
-  text-align: center;
-  float: center;
-  border-style: none;
-  color: #555555;
-  padding: 10px;
 }
 #search #submit {
   height: 40px;
@@ -6823,6 +6801,9 @@ h2 {
 .border-show {
   border-right: 5px solid #eeeeee;
 }
+.detail-column {
+  padding-right: 10px;
+}
 #details {
   border: 4px solid #eeeeee;
   padding: 20px;
@@ -6832,6 +6813,9 @@ h2 {
   margin-top: 20px;
 }
 #library-results-column {
+  padding-left: 10px;
+}
+#library-results-wrapper {
   background-color: white;
   padding: 20px;
   border: 2px solid #e4e4e4;
@@ -6842,13 +6826,12 @@ h2 {
   text-align: center;
   border-bottom: 1px solid #eeeeee;
 }
-.library-tab {
+#library-tab {
   color: #555555;
   border-bottom: 1px solid #eeeeee;
   padding-bottom: 20px;
 }
-.results-tab {
-  border-left: 1px solid #eeeeee;
+#results-tab {
   padding-bottom: 20px;
 }
 .glyphicon {
@@ -6873,27 +6856,32 @@ input:-webkit-autofill {
   background-color: #eeeeee;
 }
 .video {
-  padding: 20px;
+  padding: 10 20;
   cursor: pointer;
   cursor: hand;
 }
 .video-image {
+  position: absolute;
   float: left;
   height: 90px;
-  width: 120px;
+  width: 160px;
   padding-right: 20px;
 }
 .video-title {
   font-size: 18px;
+  padding-left: 160px;
 }
 .video-author {
   color: #47b0e2;
+  padding-left: 160px;
 }
 .video-description {
   width: 70%;
+  padding-left: 160px;
 }
 .video-views {
   display: inline-block;
+  padding-left: 160px;
   margin-right: 20px;
 }
 .video-views span {
@@ -7018,6 +7006,10 @@ input:-webkit-autofill {
   font-size: 18px;
   color: #47b0e2;
 }
+#videoDetails .detail-author {
+  float: left;
+  margin-right: 16px;
+}
 #videoDetails .detail-description {
   width: 90%;
   font-weight: normal;
@@ -7031,7 +7023,6 @@ input:-webkit-autofill {
 }
 #videoDetails .detail-likes {
   margin-right: 20px;
-  float: left;
 }
 #videoDetails .detail-likes span {
   color: #47b0e2;
@@ -7083,6 +7074,10 @@ input:-webkit-autofill {
     padding: 0px;
     margin-top: 0px;
   }
+  #library-results-wrapper {
+    padding: 0px;
+    margin-top: 0px;
+  }
   #library-results-column {
     background-color: white;
     padding: 0px;
@@ -7090,9 +7085,16 @@ input:-webkit-autofill {
     margin-top: 0px;
     margin-bottom: 0px;
   }
-  .library-tab,
-  .results-tab {
+  #library-tab,
+  #results-tab {
     padding-top: 10px;
+    padding-bottom: 10px;
+  }
+  #library-tab h1,
+  #results-tab h1 {
+    margin-top: 10px;
+    font-size: 30px;
+    font-weight: normal;
   }
   .video-tab {
     padding-bottom: 10px;
@@ -7101,15 +7103,16 @@ input:-webkit-autofill {
     position: absolute;
     padding-right: 10px;
     padding-left: 10px;
+    width: 140px;
   }
   .video-title {
-    padding-left: 120px;
+    padding-left: 140px;
   }
   .video-author {
-    padding-left: 120px;
+    padding-left: 140px;
   }
   .video-views {
-    padding-left: 120px;
+    padding-left: 140px;
   }
   .video {
     padding: 0px;
