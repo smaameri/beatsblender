@@ -19,12 +19,14 @@ app.controller('MainController', function($scope, $window, $document, $location,
 	});
 		
 	$scope.search = function(query){
+		
+		$("#query").blur();
+		
 		YoutubeFactory.getAllVideos(query, 10, 'results', true)
 		$scope.showLibrary = false;
 		$scope.resultsInit = true;
 		$scope.updateTab();
-		
-		
+
 		var htmlContainer = angular.element(document.querySelector('html'))		
 		var htmlWidth  = htmlContainer[0].clientWidth
 		
@@ -33,8 +35,6 @@ app.controller('MainController', function($scope, $window, $document, $location,
 			$anchorScroll();
 			console.log('boo')
 		}
-		
-		$("#query").blur();
 		
 	}
 	

@@ -7060,6 +7060,10 @@ input:-webkit-autofill {
 #caption {
   margin-left: 15px;
 }
+.library-button {
+  color: #a2a2a2;
+  font-size: 30px;
+}
 /* Portrait tablets and small desktops */
 @media (max-width: 991px) {
   .container-fluid {
@@ -7125,6 +7129,9 @@ input:-webkit-autofill {
   .glyphicon {
     font-size: 36px;
     top: -50px;
+  }
+  .library-button {
+    font-size: 26px;
   }
   .form-group #query {
     font-size: 1.2em;
