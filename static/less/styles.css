@@ -6996,6 +6996,9 @@ input:-webkit-autofill {
   background: #333333;
   color: white;
 }
+#query:-webkit-autofill {
+  background-color: white !important;
+}
 #player {
   width: 500px;
   height: 200px;

@@ -15,7 +15,7 @@ app.controller('MainController', function($scope, $window, $document, $location,
 	}
 	
 	init()
-	
+		
 	var searchBar = angular.element(document.querySelector('#query'))
 	
 	$('input').click(function() {
