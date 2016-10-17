@@ -11,6 +11,12 @@ app.controller('MainController', function($scope, $window, $document, $location,
 	}	
 	
 	init()
+	
+	var searchBar = angular.element(document.querySelector('#query'))
+	
+	$('input').click(function() {
+		console.log('boo');
+	});
 		
 	$scope.search = function(query){
 		YoutubeFactory.getAllVideos(query, 10, 'results', true)
@@ -18,9 +24,11 @@ app.controller('MainController', function($scope, $window, $document, $location,
 		$scope.resultsInit = true;
 		$scope.updateTab();
 		
-		var searchBar = angular.element(document.querySelector('#query'))
-    $location.hash('results-tab');
+		$location.hash('results-tab');
     $anchorScroll();
+		
+		$("#query").blur(); 
+		
 		
 	}
 	
