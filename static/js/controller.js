@@ -66,9 +66,9 @@ app.controller('MainController', function($scope, $window, $document, $location,
 	$scope.toggleLibrary = function(tab){
 		if(tab == 'library')
 			$scope.showLibrary = true;
-		else{
+		else if(tab == 'results' && $scope.resultsInit == true)
 			$scope.showLibrary = false;
-		}
+		
 		$scope.updateTab();
 	}
 		
