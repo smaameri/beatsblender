@@ -6746,6 +6746,9 @@ html {
   overflow-y: scroll;
   background-color: #eeeeee;
 }
+body {
+  background-color: #eeeeee;
+}
 .main {
   background-color: #eeeeee;
 }
@@ -6755,6 +6758,8 @@ h2 {
 .library-landing {
   padding-top: 60px;
   padding-bottom: 140px;
+  padding-left: 20px;
+  padding-right: 20px;
   color: #555555;
   text-align: center;
 }

@@ -240,7 +240,7 @@ app.factory('YoutubeFactory', function($http, $q, $cookieStore, $window, $log, Y
 					})
 				}
 			else
-				return YoutubeAPI.youtubeSearch('lUuOIU6u6oU', 1).then(function(response){
+				return YoutubeAPI.youtubeSearch('ADTg9z7LgNI', 1).then(function(response){
 						video = fac.addData(response.data.items[0])
 						YoutubeAPI.getStats(video)
 						console.log(video)

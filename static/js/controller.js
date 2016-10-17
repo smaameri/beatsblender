@@ -24,11 +24,17 @@ app.controller('MainController', function($scope, $window, $document, $location,
 		$scope.resultsInit = true;
 		$scope.updateTab();
 		
-		$location.hash('results-tab');
-    $anchorScroll();
 		
-		$("#query").blur(); 
+		var htmlContainer = angular.element(document.querySelector('html'))		
+		var htmlWidth  = htmlContainer[0].clientWidth
 		
+		if( htmlWidth < 991){
+			$location.hash('results-tab');
+			$anchorScroll();
+			console.log('boo')
+		}
+		
+		$("#query").blur();
 		
 	}
 	
