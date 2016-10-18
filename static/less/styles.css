@@ -7117,6 +7117,7 @@ input:-webkit-autofill {
     border: none;
     padding: 0px;
     margin-top: 0px;
+    margin-bottom: 0px;
   }
   #library-results-wrapper {
     padding: 0px;
