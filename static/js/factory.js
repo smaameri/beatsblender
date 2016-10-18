@@ -84,7 +84,7 @@ app.factory('YoutubePlayer', function($log, $window){
 	return youtubePlayer
 })
 
-app.factory('YoutubeFactory', function($http, $q, $cookieStore, $window, $log, YoutubeAPI, YoutubePlayer){
+app.factory('YoutubeFactory', function($http, $q, $location, $anchorScroll,$cookieStore, $window, $log, YoutubeAPI, YoutubePlayer){
 	
 	fac = {}
 	
@@ -152,6 +152,18 @@ app.factory('YoutubeFactory', function($http, $q, $cookieStore, $window, $log, Y
 						store[list].push(fac.addData(video, list))
 					})
 					fac.getAllStats(store[list])
+					var htmlContainer = angular.element(document.querySelector('html'))		
+					var htmlWidth  = htmlContainer[0].clientWidth
+		
+					if( htmlWidth < 991){
+				    var old = $location.hash();
+						$location.hash('library-tab');
+						$anchorScroll();
+						//resets URL to old location
+						$location.hash(old) 
+						console.log('boo')
+					}
+					
 					return store[list]
 				})
 		}

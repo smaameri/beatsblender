@@ -33,17 +33,6 @@ app.controller('MainController', function($scope, $window, $document, $location,
 		$scope.resultsInit = true;
 		$scope.updateTab();
 
-		var htmlContainer = angular.element(document.querySelector('html'))		
-		var htmlWidth  = htmlContainer[0].clientWidth
-		
-		if( htmlWidth < 991){
-	    var old = $location.hash();
-			$location.hash('library-tab');
-			$anchorScroll();
-			//resets URL to old location
-			$location.hash(old) 
-			console.log('boo')
-		}
 		
 	}
 	
