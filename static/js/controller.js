@@ -25,6 +25,8 @@ app.controller('MainController', function($scope, $window, $document, $location,
 	$scope.search = function(query){
 		
 		$("#query").blur();
+		$(".search-button").blur();
+		
 		
 		YoutubeFactory.getAllVideos(query, 10, 'results', true)
 		$scope.showLibrary = false;
@@ -35,8 +37,11 @@ app.controller('MainController', function($scope, $window, $document, $location,
 		var htmlWidth  = htmlContainer[0].clientWidth
 		
 		if( htmlWidth < 991){
-			$location.hash('results-tab');
+	    var old = $location.hash();
+			$location.hash('library-tab');
 			$anchorScroll();
+			//resets URL to old location
+			$location.hash(old) 
 			console.log('boo')
 		}
 		

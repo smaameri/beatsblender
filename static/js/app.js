@@ -1,6 +1,6 @@
 var app = angular.module('mainApp', ['ui.router','ngCookies', 'ngTouch']);
 
-app.config(function($stateProvider, $urlRouterProvider) {
+app.config(function($stateProvider, $urlRouterProvider, $locationProvider) {
     
   $urlRouterProvider.otherwise('/');
   
@@ -27,8 +27,10 @@ app.config(function($stateProvider, $urlRouterProvider) {
 						
 	    },
 		});
-
-});
+		
+    $locationProvider.html5Mode(true);
+		
+	});
 
 app.run(function() {
 	

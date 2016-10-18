@@ -6764,6 +6764,7 @@ h2 {
   text-align: center;
 }
 #search {
+  color: #555555;
   padding-top: 30px;
   padding-bottom: 10px;
   background: #47b0e2;
@@ -6777,6 +6778,21 @@ h2 {
 #search #submit {
   height: 40px;
   float: left;
+}
+.form-control:focus {
+  border: 1px solid #ccc;
+  box-shadow: none;
+  webkit-box-shadow: none;
+}
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+  transition: background-color 5000s ease-in-out 0s;
+}
+.reset-search {
+  border-left: white;
+  color: #555555;
 }
 #sort {
   background: #f5f5f5;
@@ -6995,9 +7011,6 @@ input:-webkit-autofill {
   padding-bottom: 20px;
   background: #333333;
   color: white;
-}
-#query:-webkit-autofill {
-  background-color: white !important;
 }
 #player {
   width: 500px;
