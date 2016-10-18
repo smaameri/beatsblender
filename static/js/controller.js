@@ -1,33 +1,30 @@
-app.controller('MainController', function($scope, $window, $document, $location, $anchorScroll, YoutubeFactory, YoutubePlayer, anchorSmoothScroll){
-		
+app.controller('MainController', function(
+	$scope, $window, $document, $location, $anchorScroll,
+	YoutubeFactory,	YoutubePlayer, jqueryServices, videoResizeService
+){
+	
+	
 	function init(){
 		$scope.library = YoutubeFactory.getLibrary();
 		$scope.results = YoutubeFactory.getResults();
 		$scope.detail  = YoutubeFactory.getDetail();
 		$scope.libraryStock = YoutubeFactory.getLibraryStock();
 		YoutubePlayer.youtubeAPIInit();
+		
+		$scope.showLibrary = true;
 		$scope.resultsInit = false;
-		//resizePlayer();
+		
 	}
 				
 	init()
-		
-	var searchBar = angular.element(document.querySelector('#query'))
-	
-	$('input').click(function() {
-		console.log('boo');
-	});
-		
+					
 	$scope.search = function(query){
 		
-		$("#query").blur();
-		$(".search-button").blur();
-		
+		jqueryServices.blur()
 		YoutubeFactory.getAllVideos(query, 10, 'results', true)
 		$scope.showLibrary = false;
 		$scope.resultsInit = true;
 		$scope.updateTab();
-			
 	}
 	
 	$scope.add = function(resultsVideo){
@@ -49,38 +46,24 @@ app.controller('MainController', function($scope, $window, $document, $location,
 		$scope.detail = video;
 	}
 	
-	$scope.showLibrary = true;
-	
 	$scope.toggleLibrary = function(tab){
 		if(tab == 'library')
 			$scope.showLibrary = true;
 		else if(tab == 'results' && $scope.resultsInit == true)
 			$scope.showLibrary = false;
-		
 		$scope.updateTab();
 	}
 		
 	angular.element($window).bind('resize', function(){
-		YoutubePlayer.resizePlayer();
-		youtubePlayer.tabButton()
+		videoResizeService.resizePlayer();
 	})
-	
-	$scope.go = function(){
-		console.log('bee');
-	}
-	
+		
 	$scope.updateTab = function(){
 		if($scope.resultsInit){
-			var libraryTab = angular.element(document.querySelector('#library-tab'))		
-			var resultsTab = angular.element(document.querySelector('#results-tab'))		
-			if($scope.showLibrary == true){
-				libraryTab.css('border-bottom', '5px solid #47b0e2');
-				resultsTab.css('border-bottom', '5px solid white');
-			}
-			else{
-				libraryTab.css('border-bottom', '5px solid white');
-				resultsTab.css('border-bottom', '5px solid #47b0e2');
-			}
+			if($scope.showLibrary == true)
+				jqueryServices.libraryTabActive()
+			else
+				jqueryServices.resultsTabActive()
 		}
 	}
 
