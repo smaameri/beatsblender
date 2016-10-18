@@ -8,11 +8,12 @@ app.service('anchorSmoothScroll', function(){
         
         var startY = currentYPosition();
         var stopY = elmYPosition(eID);
-        var distance = stopY > startY ? stopY - startY : startY - stopY;
+        var distance = stopY > startY ? stopY - startY : startåY - stopY;
         if (distance < 100) {
             scrollTo(0, stopY); return;
         }
-        var speed = Math.round(distance / 10);
+				console.log(distance);
+        var speed = Math.round(distance);
         if (speed >= 20) speed = 20;
         var step = Math.round(distance / 25);
         var leapY = stopY > startY ? startY + step : startY - step;
