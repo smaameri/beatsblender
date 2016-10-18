@@ -23,12 +23,11 @@ app.controller('MainController', function($scope, $window, $document, $location,
 		$("#query").blur();
 		$(".search-button").blur();
 		
-		
 		YoutubeFactory.getAllVideos(query, 10, 'results', true)
 		$scope.showLibrary = false;
 		$scope.resultsInit = true;
 		$scope.updateTab();
-		
+			
 	}
 	
 	$scope.add = function(resultsVideo){
