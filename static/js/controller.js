@@ -1,4 +1,4 @@
-app.controller('MainController', function($scope, $window, $document, $location, $anchorScroll, YoutubeFactory, YoutubePlayer){
+app.controller('MainController', function($scope, $window, $document, $location, $anchorScroll, YoutubeFactory, YoutubePlayer, anchorSmoothScroll){
 		
 	function init(){
 		$scope.library = YoutubeFactory.getLibrary();
@@ -8,12 +8,8 @@ app.controller('MainController', function($scope, $window, $document, $location,
 		YoutubePlayer.youtubeAPIInit();
 		$scope.resultsInit = false;
 		//resizePlayer();
-	}	
-	
-	$scope.onSwipeLeft = function(){
-		console.log('boo')
 	}
-	
+				
 	init()
 		
 	var searchBar = angular.element(document.querySelector('#query'))
@@ -32,7 +28,6 @@ app.controller('MainController', function($scope, $window, $document, $location,
 		$scope.showLibrary = false;
 		$scope.resultsInit = true;
 		$scope.updateTab();
-
 		
 	}
 	

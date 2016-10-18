@@ -84,7 +84,7 @@ app.factory('YoutubePlayer', function($log, $window){
 	return youtubePlayer
 })
 
-app.factory('YoutubeFactory', function($http, $q, $location, $anchorScroll,$cookieStore, $window, $log, YoutubeAPI, YoutubePlayer){
+app.factory('YoutubeFactory', function($http, $q, $location, $anchorScroll,$cookieStore, $window, $log, YoutubeAPI, YoutubePlayer, anchorSmoothScroll){
 	
 	fac = {}
 	
@@ -157,11 +157,13 @@ app.factory('YoutubeFactory', function($http, $q, $location, $anchorScroll,$cook
 		
 					if( htmlWidth < 991){
 				    var old = $location.hash();
-						$location.hash('library-tab');
-						$anchorScroll();
+						$location.hash('.video-tab:nth-child(2)');
+						//$anchorScroll();
 						//resets URL to old location
 						$location.hash(old) 
 						console.log('boo')
+			      anchorSmoothScroll.scrollTo('library-tab');      
+						
 					}
 					
 					return store[list]
