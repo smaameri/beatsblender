@@ -1,6 +1,6 @@
-var app = angular.module('mainApp', ['ui.router','ngCookies', 'ngTouch']);
+var app = angular.module('mainApp', ['ui.router','ngCookies', 'ngTouch', 'satellizer']);
 
-app.config(function($stateProvider, $urlRouterProvider, $locationProvider) {
+app.config(function($stateProvider, $urlRouterProvider, $locationProvider, $authProvider) {
     
   $urlRouterProvider.otherwise('/');
   
@@ -20,7 +20,9 @@ app.config(function($stateProvider, $urlRouterProvider, $locationProvider) {
 						},
 
 	        'search@index': { templateUrl: 'static/partials/search.htm' },
-	        'results@index': { templateUrl: 'static/partials/results.htm' },
+	        'login@index': { templateUrl: 'static/partials/login.htm',
+														controller:'LoginController'},
+					'results@index': { templateUrl: 'static/partials/results.htm' },
 	        'library@index': { templateUrl: 'static/partials/library.htm' },
 	        'details@index': { templateUrl: 'static/partials/details.htm' },
 						
@@ -30,9 +32,42 @@ app.config(function($stateProvider, $urlRouterProvider, $locationProvider) {
 		
     $locationProvider.html5Mode(true);
 		
+	  $authProvider.facebook({
+	    clientId: '667376810095081',
+	    // by default, the redirect URI is http://localhost:5000
+	    redirectUri: 'http://localhost:5000/'
+	  });
+	
+	
+		$authProvider.google({
+		  url: '/auth/google',
+	    clientId: '878995820450-f5217mer9onf5o6reltpku6ksbo301pd.apps.googleusercontent.com',
+	    redirectUri: 'http://localhost:5000',
+		  authorizationEndpoint: 'https://accounts.google.com/o/oauth2/auth',
+		  scope: ['profile', 'email'],
+		  scopePrefix: 'openid',
+		  scopeDelimiter: ' ',
+		  requiredUrlParams: ['scope'],
+		  optionalUrlParams: ['display'],
+		  display: 'popup',
+		  type: '2.0',
+		});
+	
+		
 	});
 
-app.run(function() {
-	
+
+app.run(function ($rootScope, $state, $auth) {
+  $rootScope.$on('$stateChangeStart',
+    function (event, toState) {
+      var requiredLogin = false;
+      if (toState.data && toState.data.requiredLogin)
+        requiredLogin = true;
+
+      if (requiredLogin && !$auth.isAuthenticated()) {
+        event.preventDefault();
+        $state.go('login');
+      }
+    });
 });
 

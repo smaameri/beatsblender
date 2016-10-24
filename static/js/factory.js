@@ -295,18 +295,22 @@ app.factory('YoutubeAPI', function($http){
           part: 'id,snippet',
           fields: 'items/id,items/snippet/title,items/snippet/channelTitle,items/snippet/description,items/snippet/thumbnails/high,items/snippet/publishedAt',
 					q: query,
-        }			  
+        },
+        //to stop satellizer adding authorisation headers
+        skipAuthorization: true
       })
 		};
 		
 		youtubeAPI.youtubeStatisticsSearch = function(data){
 			return $http.get('https://www.googleapis.com/youtube/v3/videos',{
         params: {
-        key: 'AIzaSyBy9_bHIiY_cr8xXiPPt8QOGT0Nq2KrbwQ',
-        id: data,
-				part: 'statistics',
-	 		  fields:'items/id,items/statistics/viewCount,items/statistics/likeCount'
-        }			  
+	        key: 'AIzaSyBy9_bHIiY_cr8xXiPPt8QOGT0Nq2KrbwQ',
+	        id: data,
+					part: 'statistics',
+		 		  fields:'items/id,items/statistics/viewCount,items/statistics/likeCount'
+        },		
+        //to stop satellizer adding authorisation headers
+				skipAuthorization: true
       });
 		};
 		
