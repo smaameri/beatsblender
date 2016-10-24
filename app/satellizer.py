@@ -6,7 +6,7 @@ import flask
 import jwt
 import requests
 from flask import Flask, jsonify, request, make_response
-from flask.ext.sqlalchemy import SQLAlchemy
+from flask_sqlalchemy import SQLAlchemy
 from jwt import DecodeError, ExpiredSignature
 
 from app import app
