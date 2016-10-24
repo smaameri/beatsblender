@@ -5,6 +5,8 @@ app.controller('LoginController', function ($scope, $auth, $state) {
     $auth
       .signup({email: $scope.email, password: $scope.password})
       .then(function (response) {
+				console.log('success');
+				console.log(response);
         $auth.setToken(response);
         $state.go('index');
       })
@@ -17,14 +19,13 @@ app.controller('LoginController', function ($scope, $auth, $state) {
     $auth
       .login({email: $scope.email, password: $scope.password})
       .then(function (response) {
+				console.log('success');
+				console.log(response);
         $auth.setToken(response);
-        $state.go('secret');
+        $state.go('index');
       })
       .catch(function (response) {
-				        
        console.log("error response", response);
-								
-				
       })
   };
 

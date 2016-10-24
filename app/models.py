@@ -1,4 +1,9 @@
-from run import db
+from datetime import datetime, timedelta
+import jwt
+
+from app import db
+from app import app
+
 
 class User(db.Model):
     id = db.Column(db.Integer, primary_key=True)
