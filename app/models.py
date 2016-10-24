@@ -5,7 +5,7 @@ from app import db
 from app import app
 
 
-class User(db.Model):
+class Users(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(100))
     email = db.Column(db.String(100), nullable=False)

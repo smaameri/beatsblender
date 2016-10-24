@@ -11,7 +11,7 @@ from jwt import DecodeError, ExpiredSignature
 
 from app import app
 from app import db
-from models import User
+from models import Users
 
 def parse_token(req):
     token = req.headers.get('Authorization').split()[1]
@@ -25,7 +25,7 @@ def signup():
     email = data["email"]
     password = data["password"]
 
-    user = User(email=email, password=password)
+    user = Users(email=email, password=password)
     db.session.add(user)
     db.session.commit()
 
@@ -42,7 +42,7 @@ def login():
     email = data.get("email")
     password = data.get("password")
 
-    user = User.query.filter_by(email=email).first()
+    user = Users.query.filter_by(email=email).first()
     if not user:
         return jsonify(error="No such user"), 404
     if user.password == password:
@@ -68,7 +68,7 @@ def user_info():
         return jsonify(error='Expired token'), 401
     else:
         user_id = payload['sub']
-        user = User.query.filter_by(id=user_id).first()
+        user = Users.query.filter_by(id=user_id).first()
         if user is None:
             return jsonify(error='Should not happen ...'), 500
 
@@ -104,14 +104,14 @@ def auth_facebook():
     print ""
     
     # Step 3. Create a new account or return an existing one.
-    user = User.query.filter_by(facebook_id=profile['id']).first()
+    user = Users.query.filter_by(facebook_id=profile['id']).first()
     if user:
         return jsonify(token=user.token(),
          name=user.name,
          email=user.email,
          id=user.id)
 
-    u = User(facebook_id=profile['id'], email=profile['email'], name=profile['name'])
+    u = Users(facebook_id=profile['id'], email=profile['email'], name=profile['name'])
     db.session.add(u)
     db.session.commit()
     return jsonify(token=u.token(),
@@ -145,13 +145,13 @@ def google():
     print
 
     # Step 4. Create a new account or return an existing one.
-    user = User.query.filter_by(google_id=profile['sub']).first()
+    user = Users.query.filter_by(google_id=profile['sub']).first()
     if user:
         return jsonify(token=user.token(),
          name=user.name,
          email=user.email,
          id=user.id)
-    u = User(google_id=profile['sub'],
+    u = Users(google_id=profile['sub'],
              name=profile['name'],
              email=profile['email'])
     db.session.add(u)
