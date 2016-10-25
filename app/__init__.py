@@ -17,7 +17,7 @@ print(os.environ['APP_SETTINGS'])
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
 app.config['TOKEN_SECRET'] = 'dd3bf68702nd7rn0sk28s13a35e66376'
-app.config['FACEBOOK_SECRET'] = 'dd3bf68700daa6d9f8e9213a35e66376'
+app.config['FACEBOOK_SECRET'] = 'cb1a750f898cc6554a1aed597b2a3b42'
 app.config['GOOGLE_SECRET'] = 'XaQjG-Y5vZwpv4s0yop0iUBY'
 
 db = SQLAlchemy(app)
