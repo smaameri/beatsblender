@@ -34,7 +34,8 @@ app.config(function($stateProvider, $urlRouterProvider, $locationProvider, $auth
 		
 	  $authProvider.facebook({
 	    clientId: '1162949303786742',
-	    redirectUri: 'http://beatsblender-stage.herokuapp.com'
+	    // by default, the redirect URI is http://localhost:5000
+	    redirectUri: 'http://localhost:5000'
 	  });
 	
 	
