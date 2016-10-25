@@ -46,7 +46,7 @@ app.config(function($stateProvider, $urlRouterProvider, $locationProvider, $auth
 		$authProvider.google({
 		  url: '/auth/google',
 	    clientId: '878995820450-f5217mer9onf5o6reltpku6ksbo301pd.apps.googleusercontent.com',
-	    redirectUri: 'http://localhost:5000',
+	    redirectUri: 'http://beatsblender-stage/static/partials/login.htm',
 		  authorizationEndpoint: 'https://accounts.google.com/o/oauth2/auth',
 		  scope: ['profile', 'email'],
 		  scopePrefix: 'openid',
