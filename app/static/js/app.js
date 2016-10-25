@@ -28,14 +28,18 @@ app.config(function($stateProvider, $urlRouterProvider, $locationProvider, $auth
 						
 						
 	    },
-		});
+		})
+		.state('test', {
+			url:'/test',
+			templateUrl:'static/partials/search.htm'
+		})
 		
     $locationProvider.html5Mode(true);
 		
 	  $authProvider.facebook({
 	    clientId: '1162949303786742',
 	    // by default, the redirect URI is http://localhost:5000
-	    redirectUri: 'http://localhost:5000'
+	    redirectUri: 'http://localhost:5000/static/partials/login.htm'
 	  });
 	
 	

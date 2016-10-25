@@ -76,7 +76,6 @@ def user_info():
 
     return jsonify(error="never reach here..."), 500
 
-
 @app.route('/auth/facebook', methods=['POST'])
 def auth_facebook():
     print 'Facebook Login Started'
@@ -87,9 +86,8 @@ def auth_facebook():
         'client_id': request.json['clientId'],
         'redirect_uri': request.json['redirectUri'],
         'client_secret': app.config['FACEBOOK_SECRET'],
-        'code': request.json['code']
-    }
-
+        'code': request.json['code']}
+    
     # Exchange authorization code for access token.
     r = requests.get(access_token_url, params=params)
     # use json.loads instad of urlparse.parse_qsl
