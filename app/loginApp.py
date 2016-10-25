@@ -85,6 +85,7 @@ def user_info():
 
 @app.route('/auth/facebook', methods=['POST'])
 def auth_facebook():
+    print 'Facebook Login Started'
     access_token_url = 'https://graph.facebook.com/v2.3/oauth/access_token'
     graph_api_url = 'https://graph.facebook.com/v2.5/me?fields=id,email,name'
 
