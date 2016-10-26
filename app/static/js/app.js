@@ -39,8 +39,8 @@ app.config(function($stateProvider, $urlRouterProvider, $locationProvider, $auth
 	  $authProvider.facebook({
 	    clientId: '1162949303786742',
 	    // by default, the redirect URI is http://localhost:5000
-	    redirectUri: 'http://beatsblender-stage.herokuapp.com/static/partials/login.htm'
-	    //redirectUri: 'http://localhost:5000/static/partials/login.htm'
+	    //redirectUri: 'http://beatsblender-stage.herokuapp.com'
+	    redirectUri: 'http://localhost:5000/static/partials/login.htm'
 			
 	  });
 	
@@ -48,7 +48,7 @@ app.config(function($stateProvider, $urlRouterProvider, $locationProvider, $auth
 		$authProvider.google({
 		  url: '/auth/google',
 	    clientId: '878995820450-f5217mer9onf5o6reltpku6ksbo301pd.apps.googleusercontent.com',
-	    redirectUri: 'http://beatsblender-stage.herokuapp.com/static/partials/login.htm',
+	    redirectUri: 'http://beatsblender-stage.herokuapp.com',
 		  authorizationEndpoint: 'https://accounts.google.com/o/oauth2/auth',
 		  scope: ['profile', 'email'],
 		  scopePrefix: 'openid',
