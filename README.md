@@ -1,4 +1,4 @@
-# beatsblender
+# Beatzblender
 
 A single page Youtube Video Player built using Angular JS.
 
@@ -7,5 +7,5 @@ The player allows a user to:
  - create a library from the videos
  - library is stored locally using cookies
 
-Demo site on: https://beatsblender.herokuapp.com/
+Demo site on: https://beatzblender.com/
 
